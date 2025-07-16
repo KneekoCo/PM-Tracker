@@ -1,0 +1,74 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  ColorPallet:
+    Children:
+      - UTA-Blue:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =RGBA(0, 93, 165, 1)
+            Width: =506
+            X: =708
+            Y: =505
+      - UTA-Green:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =RGBA(127, 185, 89, 1)
+            Width: =506
+            X: =708
+            Y: =638
+      - UTA-LightGray:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =RGBA(209, 207, 206, 1)
+            Width: =506
+            X: =708
+            Y: =225
+      - UTA-Purple:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: |-
+              =RGBA(145, 69, 145, .5
+              )
+            X: =314
+            Y: =177
+      - UTA-Orange:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =RGBA(196, 114, 62, 1)
+            X: =314
+            Y: =325
+      - UTA-Yellow:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =RGBA(237, 211, 65, 1)
+            X: =314
+            Y: =448
+      - UTA-LightBlue:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =RGBA(121, 179, 221, 1)
+            OnSelect: =
+            Width: =283
+            X: =314
+            Y: =59
+      - UTA-Red:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =RGBA(180, 2, 44, 1)
+            Width: =506
+            X: =708
+            Y: =370
+      - UTA-Gray:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =RGBA(145, 146, 147, 1)
+            Width: =506
+            X: =708
+            Y: =102

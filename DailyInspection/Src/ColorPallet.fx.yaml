@@ -1,0 +1,76 @@
+ColorPallet As screen:
+    Fill: =Color.White
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+
+    "'UTA-Blue' As rectangle":
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: =RGBA(0, 93, 165, 1)
+        Width: =506
+        X: =708
+        Y: =505
+        ZIndex: =1
+
+    "'UTA-Green' As rectangle":
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: =RGBA(127, 185, 89, 1)
+        Width: =506
+        X: =708
+        Y: =638
+        ZIndex: =2
+
+    "'UTA-LightGray' As rectangle":
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: =RGBA(209, 207, 206, 1)
+        Width: =506
+        X: =708
+        Y: =225
+        ZIndex: =3
+
+    "'UTA-Purple' As rectangle":
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: |-
+            =RGBA(145, 69, 145, .5
+            )
+        X: =314
+        Y: =177
+        ZIndex: =4
+
+    "'UTA-Orange' As rectangle":
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: =RGBA(196, 114, 62, 1)
+        X: =314
+        Y: =325
+        ZIndex: =5
+
+    "'UTA-Yellow' As rectangle":
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: =RGBA(237, 211, 65, 1)
+        X: =314
+        Y: =448
+        ZIndex: =6
+
+    "'UTA-LightBlue' As rectangle":
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: =RGBA(121, 179, 221, 1)
+        OnSelect: =
+        Width: =283
+        X: =314
+        Y: =59
+        ZIndex: =7
+
+    "'UTA-Red' As rectangle":
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: =RGBA(180, 2, 44, 1)
+        Width: =506
+        X: =708
+        Y: =370
+        ZIndex: =8
+
+    "'UTA-Gray' As rectangle":
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: =RGBA(145, 146, 147, 1)
+        Width: =506
+        X: =708
+        Y: =102
+        ZIndex: =9
+

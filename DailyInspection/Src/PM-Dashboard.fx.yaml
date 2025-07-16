@@ -1,0 +1,2802 @@
+"'PM-Dashboard' As screen":
+    Fill: =Color.White
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+    OnVisible: |-
+        =ClearCollect(
+            colInspectionTracker2,'Inspection Tracker 2.0')
+
+    Rectangle19_6 As rectangle:
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: ='UTA-LightGray'.Fill
+        Height: =138
+        Width: =903
+        X: =463
+        ZIndex: =1
+
+    Button30 As button:
+        BorderColor: ='UTA-Gray'.Fill
+        Color: =App.Theme.Colors.PrimaryForeground
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =56
+        HoverBorderColor: =App.Theme.Colors.Darker10
+        HoverColor: =App.Theme.Colors.PrimaryForeground
+        HoverFill: =App.Theme.Colors.Darker10
+        PressedBorderColor: =App.Theme.Colors.Darker40
+        PressedColor: =Self.Color
+        PressedFill: =App.Theme.Colors.Darker40
+        Size: =15
+        Text: |-
+            ="
+            "
+        Width: =323
+        X: =999
+        Y: =41
+        ZIndex: =2
+
+    Icon7_10 As icon.Home:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =App.Theme.Colors.Darker30
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Icon: =Icon.Home
+        OnSelect: =Navigate('PM-Home')
+        Y: =5
+        ZIndex: =3
+
+    Icon11_1 As icon.Add:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =App.Theme.Colors.Darker30
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Icon: =Icon.Add
+        OnSelect: =Navigate('PM Tracker')
+        X: =77
+        Y: =5
+        ZIndex: =4
+
+    Label43_14 As label:
+        Align: =Align.Right
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =44
+        Size: =13
+        Text: |-
+            ="Days to Inspection:"
+        Width: =98
+        X: =689
+        Y: =76
+        ZIndex: =5
+
+    CBDay_1 As checkbox:
+        BorderColor: =App.Theme.Colors.Darker40
+        CheckboxBorderColor: =Color.Black
+        CheckmarkFill: =App.Theme.Colors.Primary
+        Color: =RGBA(0, 0, 0, 1)
+        Font: =App.Theme.Font
+        Height: =44
+        HoverColor: =App.Theme.Colors.Darker30
+        OnCheck: |-
+            =ClearCollect(
+                colSortedInspections,
+            If(
+                CBType_1.Value && CBVeh_1.Value, 
+                Filter(colInspectionTracker2, 'VEHICLE NO' = DDVeh_1.Selected.'Coach/Cab/Locomotive' && 'VEHICLE TYPE' = DDVehType_1.Selected.Value),
+                
+                CBVeh_1.Value, 
+                Filter(colInspectionTracker2, 'VEHICLE NO' = DDVeh_1.Selected.'Coach/Cab/Locomotive'), 
+                
+                CBType_1.Value, 
+            
+                Filter(colInspectionTracker2, 'VEHICLE NO' = DDVehType_1.Selected.Value), colInspectionTracker2))
+        OnUncheck: |-
+            =ClearCollect(
+                colSortedInspections,
+            If(
+                CBType_1.Value && CBVeh_1.Value, 
+                Filter(colInspectionTracker2, 'VEHICLE NO' = DDVeh_1.Selected.'Coach/Cab/Locomotive' && 'VEHICLE TYPE' = DDVehType_1.Selected.Value),
+                
+                CBVeh_1.Value, 
+                Filter(colInspectionTracker2, 'VEHICLE NO' = DDVeh_1.Selected.'Coach/Cab/Locomotive'), 
+                
+                CBType_1.Value, 
+            
+                Filter(colInspectionTracker2, 'VEHICLE TYPE' = DDVehType_1.Selected.Value), colInspectionTracker2))
+        Reset: =resetCheckbox
+        Size: =13
+        Text: ="Filter by Days to Inspection"
+        Width: =192
+        X: =502
+        Y: =76
+        ZIndex: =6
+
+    DDDay_1 As dropdown:
+        BorderColor: =Color.Black
+        BorderThickness: =1
+        ChevronBackground: ='UTA-Gray'.Fill
+        ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+        ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+        ChevronFill: =App.Theme.Colors.PrimaryForeground
+        ChevronHoverBackground: =App.Theme.Colors.Darker10
+        ChevronHoverFill: =App.Theme.Colors.PrimaryForeground
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Font: =App.Theme.Font
+        Height: =44
+        HoverColor: =RGBA(0, 0, 0, 1)
+        HoverFill: =App.Theme.Colors.Lighter70
+        Items: =[7, 14, 30, 45, 60, 75, 92]
+        PressedColor: =App.Theme.Colors.PrimaryForeground
+        PressedFill: =App.Theme.Colors.Darker30
+        SelectionColor: =App.Theme.Colors.PrimaryForeground
+        SelectionFill: =App.Theme.Colors.Primary
+        Size: =13
+        Width: =112
+        X: =790
+        Y: =76
+        ZIndex: =7
+
+    DateToday_1 As datepicker:
+        BorderColor: =App.Theme.Colors.Darker40
+        CalendarHeaderFill: =App.Theme.Colors.Primary
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Font: =App.Theme.Font
+        Height: =39
+        HoverDateFill: =App.Theme.Colors.Lighter70
+        IconBackground: =App.Theme.Colors.Primary
+        IconFill: =App.Theme.Colors.PrimaryForeground
+        SelectedDateFill: =App.Theme.Colors.Primary
+        Visible: =false
+        Width: =185
+        X: =158
+        Y: =20
+        ZIndex: =8
+
+    CBType_1 As checkbox:
+        BorderColor: =App.Theme.Colors.Darker40
+        CheckboxBorderColor: =Color.Black
+        CheckmarkFill: =App.Theme.Colors.Primary
+        Color: =RGBA(0, 0, 0, 1)
+        Font: =App.Theme.Font
+        Height: =44
+        HoverColor: =App.Theme.Colors.Darker30
+        OnCheck: |-
+            =ClearCollect(
+                colSortedInspections,
+            If(
+                CBType_1.Value && CBVeh_1.Value, 
+                Filter(colInspectionTracker2, 'VEHICLE NO' = DDVeh_1.SelectedText.'Coach/Cab/Locomotive' && 'VEHICLE TYPE' = DDVehType_1.Selected.Value),
+                
+                CBVeh_1.Value, 
+                Filter(colInspectionTracker2, 'VEHICLE NO' = DDVeh_1.Selected.'Coach/Cab/Locomotive'), 
+                
+                CBType_1.Value, 
+            
+                Filter(colInspectionTracker2, 'VEHICLE TYPE' = DDVehType_1.Selected.Value), colInspectionTracker2))
+        OnUncheck: |-
+            =ClearCollect(
+                colSortedInspections,
+            If(
+                CBType_1.Value && CBVeh_1.Value, 
+                Filter(colInspectionTracker2, 'VEHICLE NO' = DDVeh_1.Selected.'Coach/Cab/Locomotive' && 'VEHICLE TYPE' = DDVehType_1.Selected.Value),
+                
+                CBVeh_1.Value, 
+                Filter(colInspectionTracker2, 'VEHICLE NO' = DDVeh_1.Selected.'Coach/Cab/Locomotive'), 
+                
+                CBType_1.Value, 
+            
+                Filter(colInspectionTracker2, 'VEHICLE TYPE' = DDVehType_1.Selected.Value), colInspectionTracker2))
+        Reset: =resetCheckbox
+        Size: =13
+        Text: ="Filter by Type"
+        Width: =113
+        X: =503
+        Y: =13
+        ZIndex: =9
+
+    Label43_15 As label:
+        Align: =Align.Right
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =44
+        Size: =13
+        Text: |-
+            ="Type:"
+        Width: =76
+        X: =624
+        Y: =13
+        ZIndex: =10
+
+    DDVehType_1 As dropdown:
+        BorderColor: =Color.Black
+        BorderThickness: =1
+        ChevronBackground: ='UTA-Gray'.Fill
+        ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+        ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+        ChevronFill: =App.Theme.Colors.PrimaryForeground
+        ChevronHoverBackground: =App.Theme.Colors.Darker10
+        ChevronHoverFill: =App.Theme.Colors.PrimaryForeground
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Font: =App.Theme.Font
+        Height: =44
+        HoverColor: =RGBA(0, 0, 0, 1)
+        HoverFill: =App.Theme.Colors.Lighter70
+        Items: =Distinct('Loco/Cab/Coach', 'Vehicle Type')
+        PressedColor: =App.Theme.Colors.PrimaryForeground
+        PressedFill: =App.Theme.Colors.Darker30
+        SelectionColor: =App.Theme.Colors.PrimaryForeground
+        SelectionFill: =App.Theme.Colors.Primary
+        Size: =13
+        Width: =200
+        X: =703
+        Y: =13
+        ZIndex: =11
+
+    Rectangle19_7 As rectangle:
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: ='UTA-LightGray'.Fill
+        Height: =138
+        Visible: =CBVeh_1.Value
+        Width: =488
+        X: =463
+        ZIndex: =12
+
+    DDVeh_1 As dropdown:
+        BorderColor: =Color.Black
+        BorderThickness: =1
+        ChevronBackground: ='UTA-Gray'.Fill
+        ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+        ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+        ChevronFill: =App.Theme.Colors.PrimaryForeground
+        ChevronHoverBackground: =App.Theme.Colors.Darker10
+        ChevronHoverFill: =App.Theme.Colors.PrimaryForeground
+        Default: =
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Font: =App.Theme.Font
+        Height: =44
+        HoverColor: =RGBA(0, 0, 0, 1)
+        HoverFill: =App.Theme.Colors.Lighter70
+        Items: =Filter('Loco/Cab/Coach', 'Vehicle Type' = DDVehType_2.Selected.Value)
+        PressedColor: =App.Theme.Colors.PrimaryForeground
+        PressedFill: =App.Theme.Colors.Darker30
+        SelectionColor: =App.Theme.Colors.PrimaryForeground
+        SelectionFill: =App.Theme.Colors.Primary
+        Size: =13
+        Visible: =CBVeh_1.Value
+        Width: =112
+        X: =836
+        Y: =47
+        ZIndex: =13
+
+    Label44_14 As label:
+        Align: =Align.Right
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =55
+        Size: =15
+        Text: |
+            ="Upcoming Inspections (Next 60 Days): " & CountRows(
+                Filter(colInspectionTracker2, DateDiff(Today(), 'INSP DUE DATE') >= 0 && DateDiff(Today(), 'INSP DUE DATE') <= 60)
+            )
+        Width: =407
+        Y: =97
+        ZIndex: =20
+
+    Label43_16 As label:
+        Align: =Align.Right
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =44
+        Size: =13
+        Text: |-
+            ="Vehicle No:"
+        Visible: =CBVeh_1.Value
+        Width: =89
+        X: =747
+        Y: =47
+        ZIndex: =21
+
+    Gallery7_2 As gallery.variableTemplateHeightGallery:
+        BorderColor: =App.Theme.Colors.Darker40
+        DelayItemLoading: =true
+        Fill: ='UTA-Gray'.Fill
+        Height: =228
+        Items: |
+            =Filter(
+                ForAll(
+                    GroupBy(
+                        Filter(
+                            colInspectionTracker2,
+                            DateDiff(Today(), 'INSP DUE DATE') >= -1000 &&
+                            DateDiff(Today(), 'INSP DUE DATE') <= 100
+                        ),
+                        Title, // VEHICLE NO
+                        GroupedInspections
+                    ),
+                    Patch(
+                        First(
+                            SortByColumns(
+                                GroupedInspections,
+                                "field_3", SortOrder.Ascending, // PRIORITY
+                                "field_5", SortOrder.Ascending  // DUE DATE
+                            )
+                        ),
+                        { 'File name with extension': Title } // Add VEHICLE NO back
+                    )
+                ),
+            
+                // ✅ Checkbox-controlled filters:
+                If(
+                   CBVeh_1.Value,
+                    'File name with extension' = DDVeh_1.Selected.'Coach/Cab/Locomotive2',
+                    true
+                ) &&
+                If(
+                    CBType_1.Value,
+                    'VEHICLE TYPE' = DDVehType_1.Selected.Value,
+                    true
+                ) &&
+                If(
+                    CBDay_1.Value,
+                    DateDiff(Today(), 'INSP DUE DATE') <= Value(DDDay_1.Selected.Value),
+                    true
+                )
+            )
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: =Set(varDateInfo, true)
+        TemplateSize: =212
+        Visible: =varDateInfo
+        Width: =881
+        X: =479
+        Y: =285
+        ZIndex: =23
+
+        Label42_18 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: |-
+                =If(
+                
+                     (!IsBlank(Value(TxDayToInsp_2.Text)) && Value(TxDayToInsp_2.Text) <= 0 && Value(TxDayToInsp_2.Text) >= -100) , 
+                    Color.White, //  Due in 7 Days
+                
+                    //  White: Due within 7 days
+                    (!IsBlank(Value(TxDayToInsp_2.Text)) && Value(TxDayToInsp_2.Text) <= 7 && Value(TxDayToInsp_2.Text) > 0) , 
+                    Color.Black, //  Due in 7 Days
+                
+                    // ⚫ UTA-Yellow: Due within 30 days
+                    (!IsBlank(Value(TxDayToInsp_2.Text)) && Value(TxDayToInsp_2.Text) <= 30) ,
+                    RGBA(0, 0, 0, 1), // ⚫ Due within 30 Days
+                
+                    RGBA(0, 0, 0, 1) // ⚫ Black (Not due soon)
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =If(   
+                    (!IsBlank(Value(TxDayToInsp_2.Text)) && Value(TxDayToInsp_2.Text) <= 0 && Value(TxDayToInsp_2.Text) > -100) , 
+                    'UTA-Red'.Fill, // 🔴 Due in 7 Days
+                    
+                    //  UTA-Yellow: Due within 7 days
+                    (!IsBlank(ThisItem.'INSP DUE DATE') && Value(TxDayToInsp_2.Text) <=7 && Value(TxDayToInsp_2.Text) >= 0) , 
+                    'UTA-Yellow'.Fill, //  Due in 7 Days
+                
+                    // 🟡 UTA-Orange: Due within 30 days
+                    (!IsBlank(Value(TxDayToInsp_2.Text)) && Value(TxDayToInsp_2.Text) <= 30 && Value(TxDayToInsp_2.Text) > 7) ,
+                    'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                  
+                    RGBA(255,255,255,1) // ⚪ Default White Background
+                )
+            Font: =App.Theme.Font
+            Height: =211
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.'File name with extension'
+            Width: =69
+            X: =11
+            Y: =1
+            ZIndex: =2
+
+        TxDayToInsp_2 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: |-
+                =If(
+                
+                     (!IsBlank(Value(TxDayToInsp_2.Text)) && Value(TxDayToInsp_2.Text) <= 0 && Value(TxDayToInsp_2.Text) >= -100) , 
+                    Color.White, //  Due in 7 Days
+                
+                    //  White: Due within 7 days
+                    (!IsBlank(Value(TxDayToInsp_2.Text)) && Value(TxDayToInsp_2.Text) <= 7 && Value(TxDayToInsp_2.Text) > 0) , 
+                    Color.Black, //  Due in 7 Days
+                
+                    // ⚫ UTA-Yellow: Due within 30 days
+                    (!IsBlank(Value(TxDayToInsp_2.Text)) && Value(TxDayToInsp_2.Text) <= 30) ,
+                    RGBA(0, 0, 0, 1), // ⚫ Due within 30 Days
+                
+                    RGBA(0, 0, 0, 1) // ⚫ Black (Not due soon)
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =If(   
+                    (!IsBlank(Value(TxDayToInsp_2.Text)) && Value(TxDayToInsp_2.Text) <= 0 && Value(TxDayToInsp_2.Text) > -100) , 
+                    'UTA-Red'.Fill, // 🔴 Due in 7 Days
+                    
+                    // 🔴 UTA-Red: Due within 7 days
+                    (!IsBlank(ThisItem.'INSP DUE DATE') && Value(TxDayToInsp_2.Text) <= 7 && Value(TxDayToInsp_2.Text) >= 0) , 
+                    'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                    // 🟡 UTA-Yellow: Due within 30 days
+                    (!IsBlank(Value(TxDayToInsp_2.Text)) && Value(TxDayToInsp_2.Text) <= 30 && Value(TxDayToInsp_2.Text) >= 7) ,
+                    'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                  
+                    RGBA(0, 0, 0, 0) // ⚪ Default White Background
+                )
+            Font: =App.Theme.Font
+            Height: =37
+            OnSelect: =Select(Parent)
+            Text: |-
+                =
+                If(
+                    !IsBlank(ThisItem.'INSP DUE DATE') && !IsBlank(ThisItem.'INSP DUE DATE') && DateValue(ThisItem.'INSP DUE DATE') < DateValue(ThisItem.'INSP DUE DATE'),
+                    DateDiff(
+                        Today(),
+                        DateValue(Label42_21.Text)
+                    ),
+                    DateDiff(
+                        Today(),
+                        DateValue(Label42_23.Text)
+                    )
+                )
+            Visible: =false
+            Width: =110
+            X: =224
+            Y: =84
+            ZIndex: =4
+
+        Label42_23 As label:
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |-
+                =If(
+                
+                     (!IsBlank(Value(TxDayToInsp_2.Text)) && Value(TxDayToInsp_2.Text) <= 0 && Value(TxDayToInsp_2.Text) >= -100) , 
+                    Color.White, //  Due in 7 Days
+                
+                    //  White: Due within 7 days
+                    (!IsBlank(Value(TxDayToInsp_2.Text)) && Value(TxDayToInsp_2.Text) <= 7 && Value(TxDayToInsp_2.Text) > 0) , 
+                    Color.Black, //  Due in 7 Days
+                
+                    // ⚫ UTA-Yellow: Due within 30 days
+                    (!IsBlank(Value(TxDayToInsp_2.Text)) && Value(TxDayToInsp_2.Text) <= 30) ,
+                    RGBA(0, 0, 0, 1), // ⚫ Due within 30 Days
+                
+                    RGBA(0, 0, 0, 1) // ⚫ Black (Not due soon)
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =If(   
+                    (!IsBlank(Value(TxDayToInsp_2.Text)) && Value(TxDayToInsp_2.Text) <= 0 && Value(TxDayToInsp_2.Text) > -100) , 
+                    'UTA-Red'.Fill, // 🔴 Due in 7 Days
+                    
+                    // 🔴 UTA-Red: Due within 7 days
+                    (!IsBlank(ThisItem.'INSP DUE DATE') && Value(TxDayToInsp_2.Text) <= 7 && Value(TxDayToInsp_2.Text) >= 0) , 
+                    'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                    // 🟡 UTA-Yellow: Due within 30 days
+                    (!IsBlank(Value(TxDayToInsp_2.Text)) && Value(TxDayToInsp_2.Text) <= 30 && Value(TxDayToInsp_2.Text) >= 7) ,
+                    'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                  
+                    RGBA(0, 0, 0, 0) // ⚪ Default White Background
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Lighter
+            Height: =37
+            OnSelect: =Select(Parent)
+            Text: |
+                =ThisItem.'INSP DUE DATE'
+            Visible: =false
+            Width: =114
+            X: =344
+            Y: =88
+            ZIndex: =6
+
+        Label42_20 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDate92: LookUp(
+                            colInspectionTracker2,
+                           Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDate92: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                       RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
+            Height: =37
+            OnSelect: =Select(Parent)
+            Text: |+
+                ="Next 92-Day"
+                
+            Width: =140
+            X: =96
+            Y: =1
+            ZIndex: =7
+
+        Label42_21 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDate92: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDateOOS92: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                       RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Lighter
+            Height: =55
+            OnSelect: =Select(Parent)
+            Text: |
+                = LookUp(colInspectionTracker2,Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day").'DUE DATE WITH OOS CREDIT'
+            Width: =140
+            X: =96
+            Y: =157
+            ZIndex: =8
+
+        Label42_19 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: |-
+                =If(
+                
+                     (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 0 && Value(TxDayToInsp_1.Text) >= -100) , 
+                    Color.White, //  Due in 7 Days
+                
+                    //  White: Due within 7 days
+                    (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 7 && Value(TxDayToInsp_1.Text) > 0) , 
+                    Color.Black, //  Due in 7 Days
+                
+                    // ⚫ UTA-Yellow: Due within 30 days
+                    (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 30) ,
+                    RGBA(0, 0, 0, 1), // ⚫ Due within 30 Days
+                
+                    RGBA(0, 0, 0, 1) // ⚫ Black (Not due soon)
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =If(   
+                    (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 0 && Value(TxDayToInsp_1.Text) > -100) , 
+                    'UTA-Red'.Fill, // 🔴 Due in 7 Days
+                    
+                    // 🔴 UTA-Red: Due within 7 days
+                    (!IsBlank(ThisItem.'INSP DUE DATE') && Value(TxDayToInsp_1.Text) <= 7 && Value(TxDayToInsp_1.Text) >= 0) , 
+                    'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                    // 🟡 UTA-Yellow: Due within 30 days
+                    (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 30 && Value(TxDayToInsp_1.Text) >= 7) ,
+                    'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                  
+                    RGBA(0, 0, 0, 0) // ⚪ Default White Background
+                )
+            Font: =App.Theme.Font
+            Height: =211
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.'VEHICLE TYPE'
+            Visible: =false
+            Width: =51
+            X: =76
+            Y: =1
+            ZIndex: =10
+
+        Label42_24 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDate92: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "184-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "184-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDate184: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "184-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "184-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                        RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
+            Height: =37
+            OnSelect: =Select(Parent)
+            Text: |+
+                ="Next 184-Day"
+                
+            Width: =140
+            X: =252
+            Y: =1
+            ZIndex: =11
+
+        Label42_25 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDate368: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "368-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "368-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDate368: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "368-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "368-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                       RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
+            Height: =37
+            OnSelect: =Select(Parent)
+            Text: |+
+                ="Next 368-Day"
+                
+            Width: =140
+            X: =408
+            Y: =1
+            ZIndex: =12
+
+        Label42_26 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDate1104: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1104-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1104-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDate1104: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1104-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1104-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                       RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
+            Height: =37
+            OnSelect: =Select(Parent)
+            Text: |+
+                ="Next 1104-Day"
+                
+            Width: =140
+            X: =564
+            ZIndex: =13
+
+        Label42_27 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDate1472: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1472-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1472-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDate1472: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1472-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1472-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                       RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
+            Height: =37
+            OnSelect: =Select(Parent)
+            Text: |+
+                ="Next 1472-Day"
+                
+            Width: =140
+            X: =723
+            Y: =1
+            ZIndex: =14
+
+        Label42_22 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDateOOS184: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "184-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "184-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDateOOS184: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "184-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "184-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                        RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Lighter
+            Height: =54
+            OnSelect: =Select(Parent)
+            Text: |
+                = LookUp(colInspectionTracker2,Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "184-Day").'DUE DATE WITH OOS CREDIT'
+            Width: =140
+            X: =252
+            Y: =157
+            ZIndex: =15
+
+        Label42_28 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDate92: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1104-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1104-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                      Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDateOOS1104: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1104-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1104-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                        RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Lighter
+            Height: =54
+            OnSelect: =Select(Parent)
+            Text: |
+                = LookUp(colInspectionTracker2,Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1104-Day").'DUE DATE WITH OOS CREDIT'
+            Width: =140
+            X: =564
+            Y: =157
+            ZIndex: =16
+
+        Label42_29 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDate92: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "368-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "368-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDateOOS368: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "368-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "368-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                        RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Lighter
+            Height: =54
+            OnSelect: =Select(Parent)
+            Text: |
+                = LookUp(colInspectionTracker2,Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "368-Day").'DUE DATE WITH OOS CREDIT'
+            Width: =140
+            X: =408
+            Y: =157
+            ZIndex: =17
+
+        Label42_30 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDateOOS1472: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1472-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1472-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                       Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDate1472: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1472-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1472-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                        RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Lighter
+            Height: =54
+            OnSelect: =Select(Parent)
+            Text: |
+                = LookUp(colInspectionTracker2,Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1472-Day").'DUE DATE WITH OOS CREDIT'
+            Width: =140
+            X: =723
+            Y: =157
+            ZIndex: =18
+
+        Label42_31 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDate92: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDateOOS92: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                       RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
+            Height: =37
+            OnSelect: =Select(Parent)
+            Text: |+
+                ="OOS 92-Day"
+                
+            Width: =140
+            X: =96
+            Y: =121
+            ZIndex: =19
+
+        Label42_32 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDateOOS184: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "184-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "184-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDateOOS184: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "184-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "184-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                        RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
+            Height: =37
+            OnSelect: =Select(Parent)
+            Text: |+
+                ="OOS 184-Day"
+                
+            Width: =140
+            X: =252
+            Y: =121
+            ZIndex: =20
+
+        Label42_33 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDate92: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "368-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "368-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDateOOS368: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "368-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "368-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                        RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
+            Height: =37
+            OnSelect: =Select(Parent)
+            Text: |+
+                ="OOS 368-Day"
+                
+            Width: =140
+            X: =408
+            Y: =121
+            ZIndex: =21
+
+        Label42_34 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDate92: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1104-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1104-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                      Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDateOOS1104: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1104-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1104-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                        RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
+            Height: =37
+            OnSelect: =Select(Parent)
+            Text: |+
+                ="OOS 1104-Day"
+                
+            Width: =140
+            X: =564
+            Y: =121
+            ZIndex: =22
+
+        Label42_35 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDateOOS1472: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1472-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1472-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                       Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDate1472: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1472-Day"
+                        ).'DUE DATE WITH OOS CREDIT',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1472-Day"
+                            ).'DUE DATE WITH OOS CREDIT',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                        RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
+            Height: =37
+            OnSelect: =Select(Parent)
+            Text: |+
+                ="OOS 1472-Day"
+                
+            Width: =140
+            X: =723
+            Y: =121
+            ZIndex: =23
+
+        Label42_36 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDate92: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDate92: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                       RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Lighter
+            Height: =55
+            OnSelect: =Select(Parent)
+            Text: |
+                = LookUp(colInspectionTracker2,Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day").'INSP DUE DATE'
+            Width: =140
+            X: =96
+            Y: =37
+            ZIndex: =24
+
+        Label42_37 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDate92: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "184-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "184-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDate184: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "184-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "184-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                        RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Lighter
+            Height: =54
+            OnSelect: =Select(Parent)
+            Text: |
+                = LookUp(colInspectionTracker2,Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "184-Day").'INSP DUE DATE'
+            Width: =140
+            X: =252
+            Y: =37
+            ZIndex: =25
+
+        Label42_38 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDate1104: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1104-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1104-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDate1104: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1104-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1104-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                       RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Lighter
+            Height: =54
+            OnSelect: =Select(Parent)
+            Text: |
+                = LookUp(colInspectionTracker2,Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1104-Day").'INSP DUE DATE'
+            Width: =140
+            X: =564
+            Y: =37
+            ZIndex: =26
+
+        Label42_39 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDate368: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "368-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "368-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDate368: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "368-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "368-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                       RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Lighter
+            Height: =54
+            OnSelect: =Select(Parent)
+            Text: |
+                = LookUp(colInspectionTracker2,Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "368-Day").'INSP DUE DATE'
+            Width: =140
+            X: =408
+            Y: =37
+            ZIndex: =27
+
+        Label42_40 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.None
+            Color: |
+                =With(
+                    {
+                        DueDate1472: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1472-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1472-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        Color.White, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        Color.Black, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        RGBA(0, 0, 0, 1), // 🟡 Due within 30 Days
+                
+                        RGBA(0, 0, 0, 1) // ⚪ Default
+                    )
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: |
+                =With(
+                    {
+                        DueDate1472: LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1472-Day"
+                        ).'INSP DUE DATE',
+                
+                        DaysUntilDue: DateDiff(
+                            Today(),
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1472-Day"
+                            ).'INSP DUE DATE',
+                            "Days"
+                        )
+                    },
+                    If(
+                        DaysUntilDue <= 0 && DaysUntilDue > -100,
+                        'UTA-Red'.Fill, // 🔴 Past Due within 100 Days
+                
+                        DaysUntilDue <= 7 && DaysUntilDue > 0,
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                
+                        DaysUntilDue <= 30 && DaysUntilDue > 7,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                
+                       RGBA(255, 255, 255, 1) // ⚪ Default
+                    )
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Lighter
+            Height: =54
+            OnSelect: =Select(Parent)
+            Text: |
+                = LookUp(colInspectionTracker2,Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "1472-Day").'INSP DUE DATE'
+            Width: =140
+            X: =723
+            Y: =37
+            ZIndex: =28
+
+    Group13 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =24
+
+        Rectangle19_5 As rectangle:
+            BorderColor: =App.Theme.Colors.Darker40
+            Fill: ='UTA-Gray'.Fill
+            Height: =48
+            Width: =881
+            X: =479
+            Y: =149
+            ZIndex: =14
+
+        Label44_5 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
+            Height: =47
+            Size: =13
+            Text: ="VEHICLE NO"
+            Width: =90
+            X: =483
+            Y: =150
+            ZIndex: =15
+
+        Label44_6 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
+            Height: =47
+            Size: =13
+            Text: ="VEHICLE TYPE"
+            Width: =100
+            X: =598
+            Y: =150
+            ZIndex: =16
+
+        Label44_7 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
+            Height: =47
+            Size: =13
+            Text: ="DAYS TO NEXT INSPECTION"
+            Width: =131
+            X: =725
+            Y: =150
+            ZIndex: =17
+
+        Label44_8 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
+            Height: =47
+            Size: =13
+            Text: ="NEXT INSPECTION DUE"
+            Width: =181
+            X: =1169
+            Y: =150
+            ZIndex: =18
+
+        Gallery7_1 As gallery.variableTemplateHeightGallery:
+            BorderColor: =App.Theme.Colors.Darker40
+            DelayItemLoading: =true
+            Height: =559
+            Items: |-
+                =Filter(
+                    ForAll(
+                        GroupBy(
+                            If(CBDay_1.Value, Filter(
+                                colInspectionTracker2,
+                                DateDiff(
+                                    Today(),
+                                    'INSP DUE DATE'
+                                ) >= -1000 && DateDiff(
+                                    Today(),
+                                    'INSP DUE DATE'
+                                ) <= DDDay_1.Selected.Value
+                            ),
+                            Filter(
+                                colInspectionTracker2,
+                                DateDiff(
+                                    Today(),
+                                    'INSP DUE DATE'
+                                ) >= -1000 && DateDiff(
+                                    Today(),
+                                    'INSP DUE DATE'
+                                ) <= 100
+                            )),
+                            Title,// VEHICLE NO
+                            GroupedInspections
+                        ),
+                        Patch(
+                            First(
+                                SortByColumns(
+                                    GroupedInspections,
+                                    "field_3",
+                                    SortOrder.Ascending,// PRIORITY
+                                    "field_5",
+                                    SortOrder.Ascending// DUE DATE
+                                )
+                            ),
+                            {'File name with extension': Title}// Add VEHICLE NO back
+                        )
+                    ),
+                    // ✅ Checkbox-controlled filters:
+                    If(
+                        CBVeh_1.Value,
+                        'File name with extension' = DDVeh_1.Selected.'Coach/Cab/Locomotive2',
+                        true
+                    ) &&  If(
+                        CBType_1.Value,
+                        'VEHICLE TYPE' = DDVehType_1.Selected.Value,
+                        true
+                    )
+                )
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            OnSelect: =
+            TemplateSize: =40
+            Width: =903
+            X: =463
+            Y: =197
+            ZIndex: =19
+
+            Label42_8 As label:
+                Align: =Align.Center
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: |-
+                    =If(
+                    
+                         (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 0 && Value(TxDayToInsp_1.Text) >= -100) , 
+                        Color.White, //  Due in 7 Days
+                    
+                        //  White: Due within 7 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 7 && Value(TxDayToInsp_1.Text) > 0) , 
+                        Color.Black, //  Due in 7 Days
+                    
+                        // ⚫ UTA-Yellow: Due within 30 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 30) ,
+                        RGBA(0, 0, 0, 1), // ⚫ Due within 30 Days
+                    
+                        RGBA(0, 0, 0, 1) // ⚫ Black (Not due soon)
+                    )
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: |
+                    =If(   
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 0 && Value(TxDayToInsp_1.Text) > -100) , 
+                        'UTA-Red'.Fill, // 🔴 Due in 7 Days
+                        
+                        // 🔴 UTA-Red: Due within 7 days
+                        (!IsBlank(ThisItem.'INSP DUE DATE') && Value(TxDayToInsp_1.Text) <= 7 && Value(TxDayToInsp_1.Text) >= 0) , 
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                    
+                        // 🟡 UTA-Yellow: Due within 30 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 30 && Value(TxDayToInsp_1.Text) >= 7) ,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                    
+                      
+                        RGBA(0, 0, 0, 0) // ⚪ Default White Background
+                    )
+                Font: =App.Theme.Font
+                Height: =37
+                OnSelect: =Select(Parent)
+                Text: =ThisItem.'File name with extension'
+                Width: =90
+                X: =11
+                Y: =1
+                ZIndex: =2
+
+            Label42_9 As label:
+                Align: =Align.Center
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: |-
+                    =If(
+                    
+                         (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 0 && Value(TxDayToInsp_1.Text) >= -100) , 
+                        Color.White, //  Due in 7 Days
+                    
+                        //  White: Due within 7 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 7 && Value(TxDayToInsp_1.Text) > 0) , 
+                        Color.Black, //  Due in 7 Days
+                    
+                        // ⚫ UTA-Yellow: Due within 30 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 30) ,
+                        RGBA(0, 0, 0, 1), // ⚫ Due within 30 Days
+                    
+                        RGBA(0, 0, 0, 1) // ⚫ Black (Not due soon)
+                    )
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: |
+                    =If(   
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 0 && Value(TxDayToInsp_1.Text) > -100) , 
+                        'UTA-Red'.Fill, // 🔴 Due in 7 Days
+                        
+                        // 🔴 UTA-Red: Due within 7 days
+                        (!IsBlank(ThisItem.'INSP DUE DATE') && Value(TxDayToInsp_1.Text) <= 7 && Value(TxDayToInsp_1.Text) >= 0) , 
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                    
+                        // 🟡 UTA-Yellow: Due within 30 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 30 && Value(TxDayToInsp_1.Text) >= 7) ,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                    
+                      
+                        RGBA(0, 0, 0, 0) // ⚪ Default White Background
+                    )
+                Font: =App.Theme.Font
+                Height: =37
+                OnSelect: =Select(Parent)
+                Text: =ThisItem.'VEHICLE TYPE'
+                Width: =161
+                X: =100
+                Y: =1
+                ZIndex: =3
+
+            TxDayToInsp_1 As label:
+                Align: =Align.Center
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: |-
+                    =If(
+                    
+                         (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 0 && Value(TxDayToInsp_1.Text) >= -100) , 
+                        Color.White, //  Due in 7 Days
+                    
+                        //  White: Due within 7 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 7 && Value(TxDayToInsp_1.Text) > 0) , 
+                        Color.Black, //  Due in 7 Days
+                    
+                        // ⚫ UTA-Yellow: Due within 30 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 30) ,
+                        RGBA(0, 0, 0, 1), // ⚫ Due within 30 Days
+                    
+                        RGBA(0, 0, 0, 1) // ⚫ Black (Not due soon)
+                    )
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: |
+                    =If(   
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 0 && Value(TxDayToInsp_1.Text) > -100) , 
+                        'UTA-Red'.Fill, // 🔴 Due in 7 Days
+                        
+                        // 🔴 UTA-Red: Due within 7 days
+                        (!IsBlank(ThisItem.'INSP DUE DATE') && Value(TxDayToInsp_1.Text) <= 7 && Value(TxDayToInsp_1.Text) >= 0) , 
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                    
+                        // 🟡 UTA-Yellow: Due within 30 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 30 && Value(TxDayToInsp_1.Text) >= 7) ,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                    
+                      
+                        RGBA(0, 0, 0, 0) // ⚪ Default White Background
+                    )
+                Font: =App.Theme.Font
+                Height: =37
+                OnSelect: =Select(Parent)
+                Text: |-
+                    =
+                    If(
+                        !IsBlank(Label42_13.Text) && !IsBlank(Label42_11.Text) && DateValue(Label42_13.Text) < DateValue(Label42_11.Text),
+                        DateDiff(
+                            Today(),
+                            DateValue(Label42_13.Text)
+                        ),
+                        DateDiff(
+                            Today(),
+                            DateValue(Label42_11.Text)
+                        )
+                    )
+                Width: =125
+                X: =260
+                Y: =1
+                ZIndex: =4
+
+            Label42_10 As label:
+                Align: =Align.Right
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: |-
+                    =If(
+                    
+                         (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 0 && Value(TxDayToInsp_1.Text) >= -100) , 
+                        Color.White, //  Due in 7 Days
+                    
+                        //  White: Due within 7 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 7 && Value(TxDayToInsp_1.Text) > 0) , 
+                        Color.Black, //  Due in 7 Days
+                    
+                        // ⚫ UTA-Yellow: Due within 30 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 30) ,
+                        RGBA(0, 0, 0, 1), // ⚫ Due within 30 Days
+                    
+                        RGBA(0, 0, 0, 1) // ⚫ Black (Not due soon)
+                    )
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: |
+                    =If(   
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 0 && Value(TxDayToInsp_1.Text) > -100) , 
+                        'UTA-Red'.Fill, // 🔴 Due in 7 Days
+                        
+                        // 🔴 UTA-Red: Due within 7 days
+                        (!IsBlank(ThisItem.'INSP DUE DATE') && Value(TxDayToInsp_1.Text) <= 7 && Value(TxDayToInsp_1.Text) >= 0) , 
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                    
+                        // 🟡 UTA-Yellow: Due within 30 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 30 && Value(TxDayToInsp_1.Text) >= 7) ,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                    
+                      
+                        RGBA(0, 0, 0, 0) // ⚪ Default White Background
+                    )
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =37
+                OnSelect: =Select(Parent)
+                Text: |+
+                    =ThisItem.'NEXT INSPECTION'
+                    
+                Width: =104
+                X: =677
+                Y: =1
+                ZIndex: =5
+
+            Label42_11 As label:
+                BorderColor: =App.Theme.Colors.Darker40
+                BorderStyle: =BorderStyle.None
+                Color: |-
+                    =If(
+                    
+                         (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 0 && Value(TxDayToInsp_1.Text) >= -100) , 
+                        Color.White, //  Due in 7 Days
+                    
+                        //  White: Due within 7 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 7 && Value(TxDayToInsp_1.Text) > 0) , 
+                        Color.Black, //  Due in 7 Days
+                    
+                        // ⚫ UTA-Yellow: Due within 30 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 30) ,
+                        RGBA(0, 0, 0, 1), // ⚫ Due within 30 Days
+                    
+                        RGBA(0, 0, 0, 1) // ⚫ Black (Not due soon)
+                    )
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: |
+                    =If(   
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 0 && Value(TxDayToInsp_1.Text) > -100) , 
+                        'UTA-Red'.Fill, // 🔴 Due in 7 Days
+                        
+                        // 🔴 UTA-Red: Due within 7 days
+                        (!IsBlank(ThisItem.'INSP DUE DATE') && Value(TxDayToInsp_1.Text) <= 7 && Value(TxDayToInsp_1.Text) >= 0) , 
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                    
+                        // 🟡 UTA-Yellow: Due within 30 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 30 && Value(TxDayToInsp_1.Text) >= 7) ,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                    
+                      
+                        RGBA(0, 0, 0, 0) // ⚪ Default White Background
+                    )
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Lighter
+                Height: =37
+                OnSelect: =Select(Parent)
+                Text: |
+                    =If(ThisItem.'INSP DUE DATE'<=0, ThisItem.'INSP DUE DATE', ThisItem.'DUE DATE WITH OOS CREDIT')
+                Width: =114
+                X: =779
+                Y: =1
+                ZIndex: =6
+
+            Label42_12 As label:
+                Align: =Align.Right
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: |-
+                    =If(
+                    
+                         (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 0 && Value(TxDayToInsp_1.Text) >= -100) , 
+                        Color.White, //  Due in 7 Days
+                    
+                        //  White: Due within 7 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 7 && Value(TxDayToInsp_1.Text) > 0) , 
+                        Color.Black, //  Due in 7 Days
+                    
+                        // ⚫ UTA-Yellow: Due within 30 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 30) ,
+                        RGBA(0, 0, 0, 1), // ⚫ Due within 30 Days
+                    
+                        RGBA(0, 0, 0, 1) // ⚫ Black (Not due soon)
+                    )
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: |
+                    =If(   
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 0 && Value(TxDayToInsp_1.Text) > -100) , 
+                        'UTA-Red'.Fill, // 🔴 Due in 7 Days
+                        
+                        // 🔴 UTA-Red: Due within 7 days
+                        (!IsBlank(ThisItem.'INSP DUE DATE') && Value(TxDayToInsp_1.Text) <= 7 && Value(TxDayToInsp_1.Text) >= 0) , 
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                    
+                        // 🟡 UTA-Yellow: Due within 30 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 30 && Value(TxDayToInsp_1.Text) >= 7) ,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                    
+                      
+                        RGBA(0, 0, 0, 0) // ⚪ Default White Background
+                    )
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =37
+                OnSelect: =Select(Parent)
+                Text: |+
+                    =
+                    If(
+                        IsBlank(
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day"
+                            ).'INSP DUE DATE'
+                        ),
+                       "184-Day",
+                        "92-Day"
+                        
+                    )
+                    
+                    
+                Width: =156
+                X: =385
+                Y: =1
+                ZIndex: =7
+
+            Label42_13 As label:
+                BorderColor: =App.Theme.Colors.Darker40
+                BorderStyle: =BorderStyle.None
+                Color: |-
+                    =If(
+                    
+                         (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 0 && Value(TxDayToInsp_1.Text) >= -100) , 
+                        Color.White, //  Due in 7 Days
+                    
+                        //  White: Due within 7 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 7 && Value(TxDayToInsp_1.Text) > 0) , 
+                        Color.Black, //  Due in 7 Days
+                    
+                        // ⚫ UTA-Yellow: Due within 30 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 30) ,
+                        RGBA(0, 0, 0, 1), // ⚫ Due within 30 Days
+                    
+                        RGBA(0, 0, 0, 1) // ⚫ Black (Not due soon)
+                    )
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: |
+                    =If(   
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 0 && Value(TxDayToInsp_1.Text) > -100) , 
+                        'UTA-Red'.Fill, // 🔴 Due in 7 Days
+                        
+                        // 🔴 UTA-Red: Due within 7 days
+                        (!IsBlank(ThisItem.'INSP DUE DATE') && Value(TxDayToInsp_1.Text) <= 7 && Value(TxDayToInsp_1.Text) >= 0) , 
+                        'UTA-Yellow'.Fill, // 🔴 Due in 7 Days
+                    
+                        // 🟡 UTA-Yellow: Due within 30 days
+                        (!IsBlank(Value(TxDayToInsp_1.Text)) && Value(TxDayToInsp_1.Text) <= 30 && Value(TxDayToInsp_1.Text) >= 7) ,
+                        'UTA-Orange'.Fill, // 🟡 Due within 30 Days
+                    
+                      
+                        RGBA(0, 0, 0, 0) // ⚪ Default White Background
+                    )
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Lighter
+                Height: =37
+                OnSelect: =Select(Parent)
+                Text: |-
+                    =If(
+                        IsBlank(
+                            LookUp(
+                                colInspectionTracker2,
+                                Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day"
+                            ).'INSP DUE DATE'
+                        ),
+                        LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "184-Day"
+                        ).'INSP DUE DATE',
+                        LookUp(
+                            colInspectionTracker2,
+                            Title = ThisItem.'File name with extension' && 'NEXT INSPECTION' = "92-Day"
+                        ).'INSP DUE DATE'
+                    )
+                Width: =148
+                X: =540
+                Y: =1
+                ZIndex: =8
+
+            Label48 As label:
+                Align: =Align.Center
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: |-
+                    =RGBA(255, 255, 255, 0.95
+                    )
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Bold
+                Size: =18
+                Text: |-
+                    ="Out of Servce Date: " & ThisItem.'OUT INSPECTION DATE'
+                Visible: =If(!IsBlank(ThisItem.'OUT INSPECTION DATE'), true, false)
+                Width: =813
+                X: =80
+                ZIndex: =9
+
+        Label44_9 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
+            Height: =47
+            Size: =13
+            Text: ="NEXT 92-DAY"
+            Width: =160
+            X: =927
+            Y: =150
+            ZIndex: =22
+
+    CBVeh_1 As toggleSwitch:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        FalseFill: =RGBA(128, 130, 133, 1)
+        FalseText: ="Show Vehicle Details for Selected Vehicle"
+        Font: =App.Theme.Font
+        HandleFill: =RGBA(255, 255, 255, 1)
+        Height: =46
+        OnCheck: |-
+            =UpdateContext({ resetCheckbox: false });
+            UpdateContext({ resetCheckbox: true });
+            Set(varCBVeh_1, true);
+            ClearCollect(
+                colSortedInspections2,
+            If(
+                CBType_1.Value && CBVeh_1.Value, 
+                Filter(colInspectionTracker2, 'VEHICLE NO' = DDVeh_1.Selected.'Coach/Cab/Locomotive' && 'VEHICLE TYPE' = DDVehType_1.Selected.Value),
+                
+                CBVeh_1.Value, 
+                Filter(colInspectionTracker2, 'VEHICLE NO' = DDVeh_1.Selected.'Coach/Cab/Locomotive'), 
+                
+                CBType_1.Value, 
+            
+                Filter(colInspectionTracker2, 'VEHICLE TYPE' = DDVehType_1.Selected.Value), colInspectionTracker2));
+                Set(varDateInfo, true)
+        OnUncheck: |-
+            =
+            UpdateContext({ resetCheckbox: false });
+            UpdateContext({ resetCheckbox: true });
+            
+            
+            ClearCollect(
+                colSortedInspections,
+            If(
+                CBType_1.Value && CBVeh_1.Value, 
+                Filter(colInspectionTracker2, 'VEHICLE NO' = DDVeh_1.Selected.'Coach/Cab/Locomotive' && 'VEHICLE TYPE' = DDVehType_1.Selected.Value),
+                
+                CBVeh_1.Value, 
+                Filter(colInspectionTracker2, 'VEHICLE NO' = DDVeh_1.Selected.'Coach/Cab/Locomotive'), 
+                
+                CBType_1.Value, 
+            
+                Filter(colInspectionTracker2, 'VEHICLE TYPE' = DDVehType_1.Selected.Value), colInspectionTracker2));
+                Set(varDateInfo, false)
+        Size: =13
+        TrueFill: =App.Theme.Colors.Primary
+        TrueText: ="Hide Vehicle Details"
+        Width: =311
+        X: =1005
+        Y: =46
+        ZIndex: =25
+
+    Label43_17 As label:
+        Align: =Align.Right
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =44
+        Size: =13
+        Text: |-
+            ="Type:"
+        Visible: =CBVeh_1.Value
+        Width: =76
+        X: =468
+        Y: =47
+        ZIndex: =26
+
+    DDVehType_2 As dropdown:
+        BorderColor: =Color.Black
+        BorderThickness: =1
+        ChevronBackground: ='UTA-Gray'.Fill
+        ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+        ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+        ChevronFill: =App.Theme.Colors.PrimaryForeground
+        ChevronHoverBackground: =App.Theme.Colors.Darker10
+        ChevronHoverFill: =App.Theme.Colors.PrimaryForeground
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Font: =App.Theme.Font
+        Height: =44
+        HoverColor: =RGBA(0, 0, 0, 1)
+        HoverFill: =App.Theme.Colors.Lighter70
+        Items: =Distinct('Loco/Cab/Coach', 'Vehicle Type')
+        PressedColor: =App.Theme.Colors.PrimaryForeground
+        PressedFill: =App.Theme.Colors.Darker30
+        SelectionColor: =App.Theme.Colors.PrimaryForeground
+        SelectionFill: =App.Theme.Colors.Primary
+        Size: =13
+        Visible: =CBVeh_1.Value
+        Width: =200
+        X: =547
+        Y: =47
+        ZIndex: =27
+
+    Label44_15 As label:
+        Align: =Align.Right
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =55
+        Size: =15
+        Text: |
+            ="Upcoming Inspections (Next 30 Days): " & CountRows(
+                Filter(colInspectionTracker2, DateDiff(Today(), 'INSP DUE DATE') >= 0 && DateDiff(Today(), 'INSP DUE DATE') <= 30)
+            )
+        Width: =407
+        Y: =155
+        ZIndex: =28
+
+    Label44_16 As label:
+        Align: =Align.Right
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =55
+        Size: =15
+        Text: |
+            ="Upcoming Inspections (Next 14 Days): " & CountRows(
+                Filter(colInspectionTracker2, DateDiff(Today(), 'INSP DUE DATE') >= 0 && DateDiff(Today(), 'INSP DUE DATE') <= 14)
+            )
+        Width: =407
+        Y: =213
+        ZIndex: =29
+
+    Label44_17 As label:
+        Align: =Align.Right
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =55
+        Size: =15
+        Text: |
+            ="Upcoming Inspections (Next 7 Days): " & CountRows(
+                Filter(colInspectionTracker2, DateDiff(Today(), 'INSP DUE DATE') >= 0 && DateDiff(Today(), 'INSP DUE DATE') <= 7)
+            )
+        Width: =407
+        Y: =273
+        ZIndex: =30
+
+    DatePicker7 As datepicker:
+        BorderColor: =App.Theme.Colors.Darker40
+        CalendarHeaderFill: =App.Theme.Colors.Primary
+        Color: =RGBA(0, 0, 0, 1)
+        DefaultDate: =Today() + DDDay_1.Selected.Value
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Font: =App.Theme.Font
+        HoverDateFill: =App.Theme.Colors.Lighter70
+        IconBackground: =App.Theme.Colors.Primary
+        IconFill: =App.Theme.Colors.PrimaryForeground
+        SelectedDateFill: =App.Theme.Colors.Primary
+        Visible: =false
+        X: =1005
+        ZIndex: =32
+

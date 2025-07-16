@@ -1,0 +1,35 @@
+{
+  "Themes": [
+    {
+      "EntityName": "PowerAppsTheme",
+      "ThemeName": "PowerAppsTheme"
+    },
+    {
+      "BasePaletteColor": "#C86D6A",
+      "EntityName": "Red",
+      "Font": "Segoe UI",
+      "HueTorsion": 0,
+      "ThemeName": "Red",
+      "ThemePrimaryColorLocked": false,
+      "Vibrancy": 0
+    },
+    {
+      "BasePaletteColor": "#93AF50",
+      "EntityName": "Green",
+      "Font": "Segoe UI",
+      "HueTorsion": 0,
+      "ThemeName": "Green",
+      "ThemePrimaryColorLocked": false,
+      "Vibrancy": 0
+    },
+    {
+      "BasePaletteColor": "#4398BD",
+      "EntityName": "Blue",
+      "Font": "Segoe UI",
+      "HueTorsion": 0,
+      "ThemeName": "Blue",
+      "ThemePrimaryColorLocked": false,
+      "Vibrancy": 0
+    }
+  ]
+}

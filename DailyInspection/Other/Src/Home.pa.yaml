@@ -1,0 +1,110 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Home:
+    Children:
+      - Image4:
+          Control: Image@2.2.3
+          Properties:
+            Height: =768
+            Image: ='Jake S. 1'
+            ImagePosition: =ImagePosition.Fill
+            Width: =1366
+      - Rectangle1:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =RGBA(166, 166, 166, 0.7)
+            Height: =768
+            Width: =1366
+      - Image2_1:
+          Control: Image@2.2.3
+          Properties:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            FocusedBorderThickness: =4
+            Height: =265
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Image: =User().Image
+            PaddingBottom: =0.00
+            PaddingLeft: =0.00
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            RadiusBottomLeft: =Image2_1.Height
+            RadiusBottomRight: |+
+              =Image2_1.Height
+
+            RadiusTopLeft: |+
+              =Image2_1.Height
+
+            RadiusTopRight: =Image2_1.Height
+            Width: =265
+            X: =193
+            Y: =95
+      - Label1_1:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            Color: =RGBA(50, 49, 48, 1)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(161, 159, 157, 1)
+            Fill: =RGBA(237, 237, 237, 0.75)
+            FocusedBorderThickness: =4
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =56
+            PaddingBottom: =4.22
+            PaddingLeft: =4.22
+            Size: =18
+            Text: =Office365Users.UserProfileV2(User().Email).displayName
+            Width: =700
+            X: =601
+            Y: =178
+      - Label17:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            Fill: =RGBA(237, 237, 237, 0.7)
+            FontWeight: =FontWeight.Semibold
+            Height: =51
+            Size: =24
+            Text: ="Welcome to the Commuter Rail Inspection App!"
+            Width: =1366
+      - Button1_31:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(161, 159, 157, 1)
+            DisabledFill: =RGBA(242, 242, 241, 0)
+            Fill: =RGBA(0, 0, 0, 0.61)
+            Font: =Font.'Segoe UI'
+            Height: =84.33
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =RGBA(16, 110, 190, 1)
+            OnSelect: =Navigate('PM-Home')
+            PaddingBottom: =4.22
+            PaddingLeft: =4.22
+            PressedBorderColor: =RGBA(0, 69, 120, 1)
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =RGBA(16, 110, 190, 1)
+            Size: =24
+            Text: ="PM Screen"
+            Width: =550
+            X: =51
+            Y: =459

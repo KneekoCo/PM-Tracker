@@ -1,0 +1,164 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  PM-Home:
+    Properties:
+      OnVisible: =ClearCollect(colInspectionTracker2, 'Inspection Tracker 2.0')
+    Children:
+      - Image6_1:
+          Control: Image@2.2.3
+          Properties:
+            Height: =768
+            Image: ='FrontRunner Mechanics Crane 190108_DSC2962'
+            ImagePosition: =ImagePosition.Fill
+            Width: =1366
+      - Rectangle1_2:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =RGBA(166, 166, 166, 0.46)
+            Height: =768
+            Width: =1366
+      - Label17_2:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            Fill: =RGBA(237, 237, 237, 0.7)
+            FontWeight: =FontWeight.Semibold
+            Height: =51
+            Size: =24
+            Text: ="Welcome to the PM Tracker"
+            Width: =1366
+      - Image2_4:
+          Control: Image@2.2.3
+          Properties:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            FocusedBorderThickness: =4
+            Height: =265
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverFill: =RGBA(0, 0, 0, 0)
+            Image: =User().Image
+            PaddingBottom: =0.00
+            PaddingLeft: =0.00
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedFill: =RGBA(0, 0, 0, 0)
+            RadiusBottomLeft: =Image2_4.Height
+            RadiusBottomRight: |+
+              =Image2_4.Height
+
+            RadiusTopLeft: |+
+              =Image2_4.Height
+
+            RadiusTopRight: =Image2_4.Height
+            Width: =265
+            X: =193
+            Y: =95
+      - Label1_4:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            Color: =RGBA(50, 49, 48, 1)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(161, 159, 157, 1)
+            Fill: =RGBA(237, 237, 237, 0.75)
+            FocusedBorderThickness: =4
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =56
+            PaddingBottom: =4.22
+            PaddingLeft: =4.22
+            Size: =18
+            Text: =Office365Users.UserProfileV2(User().Email).displayName
+            Width: =700
+            X: =601
+            Y: =178
+      - Button1_32:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(161, 159, 157, 1)
+            DisabledFill: =RGBA(242, 242, 241, 0)
+            Fill: =RGBA(0, 0, 0, 0.61)
+            Font: =Font.'Segoe UI'
+            Height: =84.33
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =RGBA(16, 110, 190, 1)
+            OnSelect: =Navigate(Home)
+            PaddingBottom: =4.22
+            PaddingLeft: =4.22
+            PressedBorderColor: =RGBA(0, 69, 120, 1)
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =RGBA(16, 110, 190, 1)
+            Size: =24
+            Text: ="Home"
+            Width: =550
+            X: =51
+            Y: =405
+      - Button1_37:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(161, 159, 157, 1)
+            DisabledFill: =RGBA(242, 242, 241, 0)
+            Fill: =RGBA(0, 0, 0, 0.61)
+            Font: =Font.'Segoe UI'
+            Height: =84.33
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =RGBA(16, 110, 190, 1)
+            OnSelect: =Navigate('PM Tracker')
+            PaddingBottom: =4.22
+            PaddingLeft: =4.22
+            PressedBorderColor: =RGBA(0, 69, 120, 1)
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =RGBA(16, 110, 190, 1)
+            Size: =18
+            Text: ="PM Updater"
+            Width: =224
+            X: =52
+            Y: =593
+      - Button1_38:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            BorderStyle: =BorderStyle.None
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(161, 159, 157, 1)
+            DisabledFill: =RGBA(242, 242, 241, 0)
+            Fill: =RGBA(0, 0, 0, 0.61)
+            Font: =Font.'Segoe UI'
+            Height: =84.33
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =RGBA(16, 110, 190, 1)
+            OnSelect: =Navigate('PM-Dashboard')
+            PaddingBottom: =4.22
+            PaddingLeft: =4.22
+            PressedBorderColor: =RGBA(0, 69, 120, 1)
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =RGBA(16, 110, 190, 1)
+            Size: =18
+            Text: ="PM-Dashboard"
+            Width: =224
+            X: =377
+            Y: =593

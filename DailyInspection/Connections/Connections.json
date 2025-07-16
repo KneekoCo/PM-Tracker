@@ -1,0 +1,249 @@
+{
+  "013ab9c9-6ffc-4aef-a8b9-f0c5035234ed": {
+    "appActions": [
+      "providers/PowerPlatform.Governance/Operations/Read",
+      "providers/PowerPlatform.Governance/Operations/Write",
+      "providers/PowerPlatform.Governance/Operations/Delete"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1754/1.0.1754.4231/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://kneekocollc.sharepoint.com": {
+        "dataSources": {
+          "Inspection History": {
+            "tableName": "a91f3b09-00b3-400f-8b15-eae45859df75"
+          },
+          "Inspection Tracker 2.0": {
+            "tableName": "a98a2dfd-d30e-4610-b339-1a45d6f4d5b0"
+          },
+          "Loco/Cab/Coach": {
+            "tableName": "d88db24a-8c66-4d85-89d9-dc3c424d050e"
+          },
+          "OOS History": {
+            "tableName": "08b4403f-10e7-4318-a8b2-58713b8097b4"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Loco/Cab/Coach",
+      "Inspection Tracker 2.0",
+      "Inspection History",
+      "OOS History"
+    ],
+    "dependencies": {},
+    "dependents": [
+      "65248efe-b944-48cd-8555-d2ba6bcf99ee",
+      "f0c65877-b83c-4983-907d-194dd6f2c08e",
+      "3b827d49-3fa3-40cf-b4b0-d41b8a6e0426",
+      "1005f65f-1ac7-44eb-a57a-044c61c3559d"
+    ],
+    "id": "013ab9c9-6ffc-4aef-a8b9-f0c5035234ed"
+  },
+  "0bc6048b-cb25-4433-8e25-e66a2a4ce4d2": {
+    "appActions": [
+      "UserProfile_V2"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Users",
+      "iconUri": "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1751/1.0.1751.4213/office365users/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365users",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Users"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "0bc6048b-cb25-4433-8e25-e66a2a4ce4d2"
+  },
+  "1005f65f-1ac7-44eb-a57a-044c61c3559d": {
+    "appActions": [],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Logic flows",
+      "iconUri": "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1752/1.0.1752.4216/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "013ab9c9-6ffc-4aef-a8b9-f0c5035234ed": {
+          "value": "shared_sharepointonline"
+        },
+        "994ec01b-6c05-4645-9e6d-385ce6f8b121": {
+          "value": "shared_sharepointonline"
+        },
+        "workflowDisplayName": {
+          "value": "SavePDF - Notes and Defect - Completed"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "05cd6745-0180-4552-9bca-7adb2b548c2b"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_sharepointonline": {
+          "value": "013ab9c9-6ffc-4aef-a8b9-f0c5035234ed"
+        },
+        "workflowDisplayName": {
+          "value": "SavePDF - Notes and Defect - Completed"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "05cd6745-0180-4552-9bca-7adb2b548c2b"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "SavePDF-NotesandDefect-Completed"
+    ],
+    "dependencies": {
+      "shared_sharepointonline": "013ab9c9-6ffc-4aef-a8b9-f0c5035234ed"
+    },
+    "dependents": [],
+    "id": "1005f65f-1ac7-44eb-a57a-044c61c3559d"
+  },
+  "3b827d49-3fa3-40cf-b4b0-d41b8a6e0426": {
+    "appActions": [],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Logic flows",
+      "iconUri": "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1752/1.0.1752.4216/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "013ab9c9-6ffc-4aef-a8b9-f0c5035234ed": {
+          "value": "shared_sharepointonline"
+        },
+        "994ec01b-6c05-4645-9e6d-385ce6f8b121": {
+          "value": "shared_sharepointonline"
+        },
+        "workflowDisplayName": {
+          "value": "SavePDF - Notes and Defect"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "070ef4b0-5a22-463e-ae1e-bc3d79c5733b"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_sharepointonline": {
+          "value": "013ab9c9-6ffc-4aef-a8b9-f0c5035234ed"
+        },
+        "workflowDisplayName": {
+          "value": "SavePDF - Notes and Defect"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "070ef4b0-5a22-463e-ae1e-bc3d79c5733b"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "SavePDF-NotesandDefect"
+    ],
+    "dependencies": {
+      "shared_sharepointonline": "013ab9c9-6ffc-4aef-a8b9-f0c5035234ed"
+    },
+    "dependents": [],
+    "id": "3b827d49-3fa3-40cf-b4b0-d41b8a6e0426"
+  },
+  "65248efe-b944-48cd-8555-d2ba6bcf99ee": {
+    "appActions": [],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Logic flows",
+      "iconUri": "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1752/1.0.1752.4216/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "013ab9c9-6ffc-4aef-a8b9-f0c5035234ed": {
+          "value": "shared_sharepointonline"
+        },
+        "994ec01b-6c05-4645-9e6d-385ce6f8b121": {
+          "value": "shared_sharepointonline"
+        },
+        "workflowDisplayName": {
+          "value": "Patch Attachments"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "6d1a1aab-b906-4111-819c-1774ea8bc7cc"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_sharepointonline": {
+          "value": "013ab9c9-6ffc-4aef-a8b9-f0c5035234ed"
+        },
+        "workflowDisplayName": {
+          "value": "Patch Attachments"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "6d1a1aab-b906-4111-819c-1774ea8bc7cc"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "PatchAttachments"
+    ],
+    "dependencies": {
+      "shared_sharepointonline": "013ab9c9-6ffc-4aef-a8b9-f0c5035234ed"
+    },
+    "dependents": [],
+    "id": "65248efe-b944-48cd-8555-d2ba6bcf99ee"
+  },
+  "f0c65877-b83c-4983-907d-194dd6f2c08e": {
+    "appActions": [],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Logic flows",
+      "iconUri": "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1752/1.0.1752.4216/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "013ab9c9-6ffc-4aef-a8b9-f0c5035234ed": {
+          "value": "shared_sharepointonline"
+        },
+        "994ec01b-6c05-4645-9e6d-385ce6f8b121": {
+          "value": "shared_sharepointonline"
+        },
+        "workflowDisplayName": {
+          "value": "SavePDF - Daily Inspection"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "c587c84d-8241-4bc8-adae-c0a939f572ad"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_sharepointonline": {
+          "value": "013ab9c9-6ffc-4aef-a8b9-f0c5035234ed"
+        },
+        "workflowDisplayName": {
+          "value": "SavePDF - Daily Inspection"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "c587c84d-8241-4bc8-adae-c0a939f572ad"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "SavePDF-DailyInspection"
+    ],
+    "dependencies": {
+      "shared_sharepointonline": "013ab9c9-6ffc-4aef-a8b9-f0c5035234ed"
+    },
+    "dependents": [],
+    "id": "f0c65877-b83c-4983-907d-194dd6f2c08e"
+  }
+}

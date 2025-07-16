@@ -1,0 +1,3574 @@
+"'PM Tracker' As screen":
+    Fill: =Color.White
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+    OnHidden: =
+    OnVisible: |-
+        =NewForm(FormInspDate);
+        ResetForm(FormInspDate);
+        ClearCollect(colInspHis, 'Inspection History');
+        ClearCollect(colOOSHistory, 'OOS History'); 
+        ClearCollect(colInspectionTracker2, 'Inspection Tracker 2.0');
+        
+        Set(varChooseVehicle, true);
+        UpdateContext({varOutInsp: false, varOut30: false, var1472Day: false, var1104Day: false, var368Day:false, var184Day: false, var92Day: false });
+        Set(varOOSHis, false)
+
+    Button29_2 As button:
+        BorderColor: =App.Theme.Colors.Primary
+        BorderStyle: =BorderStyle.None
+        Color: =App.Theme.Colors.PrimaryForeground
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: ='UTA-Green'.Fill
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        HoverBorderColor: =App.Theme.Colors.Darker10
+        HoverColor: =App.Theme.Colors.PrimaryForeground
+        HoverFill: =App.Theme.Colors.Darker10
+        OnSelect: =Set(varChooseVehicle, true);
+        PressedBorderColor: =App.Theme.Colors.Darker40
+        PressedColor: =Self.Color
+        PressedFill: =App.Theme.Colors.Darker40
+        Size: =15
+        Text: ="Change Vehicle"
+        Width: =157
+        X: =604
+        Y: =61
+        ZIndex: =1
+
+    Rectangle18_23 As rectangle:
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: ='UTA-LightGray'.Fill
+        Height: =540
+        Width: =48
+        X: =376
+        Y: =53
+        ZIndex: =2
+
+    Rectangle18_22 As rectangle:
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: ='UTA-LightGray'.Fill
+        Height: =540
+        Width: =115
+        X: =195
+        Y: =51
+        ZIndex: =3
+
+    Label17_11 As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Fill: =RGBA(237, 237, 237, 0.7)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =51
+        Size: =24
+        Text: ="Enter New Inpsection"
+        Width: =1366
+        ZIndex: =4
+
+    Icon7_9 As icon.Home:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =App.Theme.Colors.Darker30
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =51
+        Icon: =Icon.Home
+        OnSelect: |-
+            =UpdateContext({ var184Day: false, var92Day: false, var1472Day: false, var1104Day: false, var368Day:false });
+            Navigate('PM-Home')
+        ZIndex: =5
+
+    Rectangle18_19 As rectangle:
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: ='UTA-LightGray'.Fill
+        Height: =541
+        Width: =80
+        Y: =52
+        ZIndex: =6
+
+    Rectangle18_20 As rectangle:
+        BorderColor: =Color.Black
+        BorderThickness: =1
+        Fill: =RGBA(0, 0, 0, 0)
+        Height: =542
+        Width: =481
+        Y: =51
+        ZIndex: =7
+
+    Rectangle18_21 As rectangle:
+        BorderColor: =Color.Black
+        BorderThickness: =1
+        Fill: ='UTA-LightGray'.Fill
+        Height: =76
+        Width: =481
+        Y: =51
+        ZIndex: =8
+
+    FormInspDate As form:
+        BorderColor: =App.Theme.Colors.Darker40
+        DataSource: ='Inspection Tracker 2.0'
+        Height: =649
+        Item: =LookUp(colInspectionTracker2, 'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' )
+        NumberOfColumns: =12
+        Width: =869
+        X: =487
+        Y: =118
+        ZIndex: =9
+
+        DataCard33 As typedDataCard.blankCard:
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =87
+            Width: =216
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            Dropdown12 As dropdown:
+                BorderColor: =App.Theme.Colors.Darker40
+                ChevronBackground: =App.Theme.Colors.Primary
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronFill: =App.Theme.Colors.PrimaryForeground
+                ChevronHoverBackground: =App.Theme.Colors.Darker10
+                ChevronHoverFill: =App.Theme.Colors.PrimaryForeground
+                Default: =DataCardValue138.Selected.Value
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Font: =App.Theme.Font
+                Height: =38
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =App.Theme.Colors.Lighter70
+                Items: ='Loco/Cab/Coach'
+                PressedColor: =App.Theme.Colors.PrimaryForeground
+                PressedFill: =App.Theme.Colors.Darker30
+                SelectionColor: =App.Theme.Colors.PrimaryForeground
+                SelectionFill: =App.Theme.Colors.Primary
+                Size: =13
+                Width: =150
+                X: =30
+                Y: =49
+                ZIndex: =1
+
+            DataCardKey108_3 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Font: =App.Theme.Font
+                Size: =13
+                Text: ="VEHICLE TYPE"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =2
+
+        DataCard34 As typedDataCard.blankCard:
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =98
+            Width: =216
+            X: =3
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey108_4 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Font: =App.Theme.Font
+                Size: =13
+                Text: ="VEHICLE NO"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            Dropdown12_1 As dropdown:
+                BorderColor: =App.Theme.Colors.Darker40
+                ChevronBackground: =App.Theme.Colors.Primary
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronFill: =App.Theme.Colors.PrimaryForeground
+                ChevronHoverBackground: =App.Theme.Colors.Darker10
+                ChevronHoverFill: =App.Theme.Colors.PrimaryForeground
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Font: =App.Theme.Font
+                Height: =38
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =App.Theme.Colors.Lighter70
+                Items: =ddVehicle.SelectedText
+                OnSelect: =Set(varChooseVehicle, true);
+                PressedColor: =App.Theme.Colors.PrimaryForeground
+                PressedFill: =App.Theme.Colors.Darker30
+                SelectionColor: =App.Theme.Colors.PrimaryForeground
+                SelectionFill: =App.Theme.Colors.Primary
+                Size: =13
+                Width: =150
+                X: =30
+                Y: =49
+                ZIndex: =2
+
+        OOSCheckbox As typedDataCard.blankCard:
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =191
+            Width: =864
+            X: =0
+            Y: =1
+            ZIndex: =1
+
+            CB184Day As checkbox:
+                BorderColor: =App.Theme.Colors.Darker40
+                CheckboxBorderColor: =App.Theme.Colors.Primary
+                CheckmarkFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                Default: =var184Day
+                Font: =App.Theme.Font
+                HoverColor: =App.Theme.Colors.Darker30
+                OnCheck: |-
+                    =
+                    UpdateContext({varOut30:false, varOutInsp:false, var184Day: true, var92Day: true })
+                OnUncheck: |
+                    =UpdateContext({ varOutInsp: false, varOut30: false, var184Day: false, var92Day: false, var1472Day: false, var1104Day: false, var368Day:false })
+                Size: =13
+                Text: ="184 DAY"
+                Visible: =If(Dropdown12.Selected.'Vehicle Type' = "Cab", false, true)
+                Width: =125
+                X: =146
+                Y: =49
+                ZIndex: =1
+
+            CB1472Day As checkbox:
+                BorderColor: =App.Theme.Colors.Darker40
+                CheckboxBorderColor: =App.Theme.Colors.Primary
+                CheckmarkFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                Default: =var1472Day
+                Font: =App.Theme.Font
+                HoverColor: =App.Theme.Colors.Darker30
+                OnCheck: |-
+                    =
+                    UpdateContext({varOut30:false, varOutInsp:false, var1472Day: true, var1104Day: false, var368Day:true, var184Day: true, var92Day: true })
+                OnUncheck: |-
+                    =UpdateContext({varOutInsp: false, varOut30: false, var1472Day: false, var1104Day: false, var368Day:false, var184Day: false, var92Day: false })
+                Size: =13
+                Text: ="1472 DAY"
+                Width: =125
+                X: =578
+                Y: =49
+                ZIndex: =2
+
+            CB92Day As checkbox:
+                BorderColor: =App.Theme.Colors.Darker40
+                CheckboxBorderColor: =App.Theme.Colors.Primary
+                CheckmarkFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                Default: =var92Day
+                Font: =App.Theme.Font
+                HoverColor: =App.Theme.Colors.Darker30
+                OnCheck: |-
+                    =Reset(DatePicker4_1);
+                    UpdateContext({ varOut30:false, varOutInsp:false, var92Day: true })
+                OnUncheck: |-
+                    =UpdateContext({varOutInsp: false, varOut30: false,  var184Day: false, var92Day: false, var1472Day: false, var1104Day: false, var368Day:false })
+                Size: =13
+                Text: ="92 DAY"
+                Visible: =If(Dropdown12.Selected.'Vehicle Type' = "Coach", false, true)
+                Width: =125
+                X: =2
+                Y: =49
+                ZIndex: =3
+
+            CB368Day As checkbox:
+                BorderColor: =App.Theme.Colors.Darker40
+                CheckboxBorderColor: =App.Theme.Colors.Primary
+                CheckmarkFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                Default: =var368Day
+                Font: =App.Theme.Font
+                HoverColor: =App.Theme.Colors.Darker30
+                OnCheck: |-
+                    =
+                    UpdateContext({varOut30:false, varOutInsp:false, var368Day:true, var184Day: true, var92Day: true })
+                OnUncheck: |-
+                    =UpdateContext({varOutInsp: false, varOut30: false,  var184Day: false, var92Day: false, var1472Day: false, var1104Day: false, var368Day:false })
+                Size: =13
+                Text: ="368 DAY"
+                Width: =125
+                X: =290
+                Y: =49
+                ZIndex: =4
+
+            CBOOS30 As checkbox:
+                BorderColor: =App.Theme.Colors.Darker40
+                CheckboxBorderColor: =App.Theme.Colors.Primary
+                CheckmarkFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                Default: =varOut30
+                Font: =App.Theme.Font
+                HoverColor: =App.Theme.Colors.Darker30
+                OnCheck: |-
+                    =Reset(DatePicker4_1);
+                    NewForm(Form5);
+                    Set(varFormFM, FormMode.New);
+                    Set(varOOSHis, true);
+                    UpdateContext({varOut30: true, varOutInsp:false});
+                    UpdateContext({ var1472Day: false, var1104Day: false, var368Day:false, var184Day: false, var92Day: false })
+                OnUncheck: |-
+                    =Set(varForm5, false);
+                    Set(varOOSHis, false);
+                    EditForm(Form5)
+                Size: =13
+                Text: ="OOS OVER 30 DAYS"
+                Width: =130
+                X: =146
+                Y: =119
+                ZIndex: =5
+
+            CB1104Day As checkbox:
+                BorderColor: =App.Theme.Colors.Darker40
+                CheckboxBorderColor: =App.Theme.Colors.Primary
+                CheckmarkFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                Default: =var1104Day
+                Font: =App.Theme.Font
+                HoverColor: =App.Theme.Colors.Darker30
+                OnCheck: |-
+                    =
+                    UpdateContext({varOut30:false, varOutInsp:false, var1104Day: true, var368Day:true, var184Day: true, var92Day: true, var1472Day: false })
+                OnUncheck: |-
+                    =UpdateContext({ varOutInsp: false, varOut30: false, var184Day: false, var92Day: false, var1472Day: false, var1104Day: false})
+                Size: =13
+                Text: ="1104 DAY"
+                Visible: =If(Dropdown12.Selected.'Vehicle Type' = "Cab" || "Coach", false, true)
+                Width: =125
+                X: =434
+                Y: =49
+                ZIndex: =6
+
+            DataCardKey108_2 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Size: =13
+                Text: ="SELECT THE INSPECTION(s) COMPLETED"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =40
+                Y: =10
+                ZIndex: =7
+
+            CBOFORINSP As checkbox:
+                BorderColor: =App.Theme.Colors.Darker40
+                CheckboxBorderColor: =App.Theme.Colors.Primary
+                CheckmarkFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                Default: =varOutInsp
+                Font: =App.Theme.Font
+                HoverColor: =App.Theme.Colors.Darker30
+                OnCheck: |-
+                    =
+                    UpdateContext({varOutInsp: true});
+                    UpdateContext({varOut30: false, var1472Day: false, var1104Day: false, var368Day:false, var184Day: false, var92Day: false })
+                OnUncheck: |-
+                    =UpdateContext({varOutInsp: false, varOut30: false, var1472Day: false, var1104Day: false, var368Day:false, var184Day: false, var92Day: false })
+                Size: =13
+                Text: ="OUT OF SERVICE"
+                Width: =130
+                X: =2
+                Y: =119
+                ZIndex: =8
+
+        DataCard31 As typedDataCard.blankCard:
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =100
+            Visible: =var92Day
+            Width: =288
+            X: =0
+            Y: =2
+            ZIndex: =1
+
+            DatePicker4 As datepicker:
+                BorderColor: =App.Theme.Colors.Darker40
+                CalendarHeaderFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: =
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Font: =App.Theme.Font
+                HoverDateFill: =App.Theme.Colors.Lighter70
+                IconBackground: =App.Theme.Colors.Primary
+                IconFill: =App.Theme.Colors.PrimaryForeground
+                SelectedDateFill: =App.Theme.Colors.Primary
+                Width: =156
+                X: =30
+                Y: =49
+                ZIndex: =1
+
+            DataCardKey108_1 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Size: =13
+                Text: ="IN SERVICE DATE"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =2
+
+        DataCard36 As typedDataCard.blankCard:
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =107
+            Visible: =varOutInsp
+            Width: =216
+            X: =6
+            Y: =2
+            ZIndex: =1
+
+            DatePicker4_1 As datepicker:
+                BorderColor: =App.Theme.Colors.Darker40
+                CalendarHeaderFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: =
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Font: =App.Theme.Font
+                HoverDateFill: =App.Theme.Colors.Lighter70
+                IconBackground: =App.Theme.Colors.Primary
+                IconFill: =App.Theme.Colors.PrimaryForeground
+                SelectedDateFill: =App.Theme.Colors.Primary
+                Width: =156
+                X: =30
+                Y: =49
+                ZIndex: =1
+
+            DataCardKey108_5 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Size: =13
+                Text: ="OUT INSP DATE"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =2
+
+        DataCard28 As typedDataCard.blankCard:
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =83
+            Width: =864
+            X: =0
+            Y: =3
+            ZIndex: =1
+
+            SubDates As button:
+                BorderColor: =App.Theme.Colors.Primary
+                Color: =App.Theme.Colors.PrimaryForeground
+                DisabledBorderColor: =RGBA(244, 244, 244, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =App.Theme.Colors.Primary
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                HoverBorderColor: =App.Theme.Colors.Darker10
+                HoverColor: =App.Theme.Colors.PrimaryForeground
+                HoverFill: =App.Theme.Colors.Darker10
+                OnSelect: |
+                    =Set(varWait, true);
+                    
+                    Patch(
+                        'Inspection Tracker 2.0',
+                        LookUp(
+                            'Inspection Tracker 2.0',
+                            'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "92-Day"
+                        ),
+                        {
+                            'LAST INSP DATE': dpLast92Day.SelectedDate,
+                            'INSP DUE DATE': dpNext92Day.SelectedDate,
+                            'OUT INSPECTION DATE': DatePicker4_1.SelectedDate,
+                            'DUE DATE WITH OOS CREDIT': dpOOSNext92Day.SelectedDate
+                        }
+                    );
+                    Patch(
+                        'Inspection Tracker 2.0',
+                        LookUp(
+                            'Inspection Tracker 2.0',
+                            'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "184-Day"
+                        ),
+                        {
+                            'LAST INSP DATE': dpLast184Day.SelectedDate,
+                            'INSP DUE DATE': dpNext184Day.SelectedDate,
+                            'OUT INSPECTION DATE': DatePicker4_1.SelectedDate,
+                            'DUE DATE WITH OOS CREDIT': dpOOSNext184Day.SelectedDate
+                        }
+                    );
+                    Patch(
+                        'Inspection Tracker 2.0',
+                        LookUp(
+                            'Inspection Tracker 2.0',
+                            'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "368-Day"
+                        ),
+                        {
+                            'LAST INSP DATE': dpLast368Day.SelectedDate,
+                            'INSP DUE DATE': dpNext368Day.SelectedDate,
+                            'OUT INSPECTION DATE': DatePicker4_1.SelectedDate,
+                            'DUE DATE WITH OOS CREDIT': dpOOSNext368Day.SelectedDate
+                        }
+                    );
+                    Patch(
+                        'Inspection Tracker 2.0',
+                        LookUp(
+                            'Inspection Tracker 2.0',
+                            'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "1104-Day"
+                        ),
+                        {
+                            'LAST INSP DATE': dpLast1104Day.SelectedDate,
+                            'INSP DUE DATE': dpNext1104Day.SelectedDate,
+                            'OUT INSPECTION DATE': DatePicker4_1.SelectedDate,
+                            'DUE DATE WITH OOS CREDIT': dpOOSNext1104Day.SelectedDate
+                        }
+                    );
+                    Patch(
+                        'Inspection Tracker 2.0',
+                        LookUp(
+                            'Inspection Tracker 2.0',
+                            'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "1472-Day"
+                        ),
+                        {
+                            'LAST INSP DATE': dpLast1472Day.SelectedDate,
+                            'INSP DUE DATE': dpNext1472Day.SelectedDate,
+                            'OUT INSPECTION DATE': DatePicker4_1.SelectedDate,
+                            'DUE DATE WITH OOS CREDIT': dpOOSNext1472Day.SelectedDate
+                        }
+                    );
+                    
+                    Set(
+                        varChooseVehicle,
+                        true
+                    );
+                    UpdateContext(
+                        {
+                            var1472Day: false,
+                            var1104Day: false,
+                            var368Day: false,
+                            var184Day: false,
+                            var92Day: false,
+                            varOut30: false,
+                            varOutInsp: false
+                        }
+                    );
+                    ClearCollect(
+                        colOOSHistory,
+                        'OOS History'
+                    );
+                    Refresh('Inspection Tracker 2.0');
+                PressedBorderColor: =App.Theme.Colors.Darker40
+                PressedColor: =Self.Color
+                PressedFill: =App.Theme.Colors.Darker40
+                Size: =15
+                Text: ="Submit"
+                Visible: =If(CBOOS30.Value=false, true, false)
+                X: =583
+                Y: =30
+                ZIndex: =1
+
+            Button29 As button:
+                BorderColor: =App.Theme.Colors.Primary
+                BorderStyle: =BorderStyle.None
+                Color: =App.Theme.Colors.PrimaryForeground
+                DisabledBorderColor: =RGBA(244, 244, 244, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: ='UTA-LightGray'.Fill
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                HoverBorderColor: =App.Theme.Colors.Darker10
+                HoverColor: =App.Theme.Colors.PrimaryForeground
+                HoverFill: =App.Theme.Colors.Darker10
+                OnSelect: =Set(varChooseVehicle, true);
+                PressedBorderColor: =App.Theme.Colors.Darker40
+                PressedColor: =Self.Color
+                PressedFill: =App.Theme.Colors.Darker40
+                Size: =15
+                Text: ="Cancel"
+                Visible: =If(CBOOS30.Value=false, true, false)
+                Width: =125
+                X: =410
+                Y: =30
+                ZIndex: =2
+
+        "'NEXT 92-DAY_DataCard1' As typedDataCard.dateEditCard":
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="NEXT_x0020_92_x002d_DAY"
+            Default: =
+            DisplayMode: =DisplayMode.View
+            DisplayName: =
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =dpNext92Day.SelectedDate
+            Visible: =false
+            Width: =288
+            X: =0
+            Y: =4
+            ZIndex: =1
+
+            DataCardKey50 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            dpNext92Day As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                CalendarHeaderFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: =DateAdd(dpLast92Day.SelectedDate,92)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Font: =App.Theme.Font
+                HoverDateFill: =App.Theme.Colors.Lighter70
+                IconBackground: =App.Theme.Colors.Primary
+                IconFill: =App.Theme.Colors.PrimaryForeground
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SelectedDateFill: =App.Theme.Colors.Primary
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey50.Y + DataCardKey50.Height + 5
+                ZIndex: =2
+
+            ErrorMessage50 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =dpNext92Day.Y + dpNext92Day.Height
+                ZIndex: =3
+
+            StarVisible50 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey50.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey50.Y
+                ZIndex: =4
+
+        "'OOS NEXT 92-DAY_DataCard1' As typedDataCard.dateEditCard":
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="OOS_x0020_NEXT_x0020_92_x002d_DA"
+            Default: =
+            DisplayMode: =DisplayMode.View
+            DisplayName: =
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =dpOOSNext92Day.SelectedDate
+            Visible: =false
+            Width: =288
+            X: =4
+            Y: =4
+            ZIndex: =1
+
+            DataCardKey142 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            dpOOSNext92Day As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                CalendarHeaderFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: |
+                    =With(
+                        {
+                            OOSDays: Sum(
+                                Filter(
+                                    colOOSHistory,
+                                    Title = ddVehicle.Selected.'Coach/Cab/Locomotive' &&
+                                    'OOS START' >= LookUp(
+                                        colInspectionTracker2,
+                                        'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "92-Day",
+                                        'LAST INSP DATE'
+                                    ) &&
+                                    'OOS END' <= LookUp(
+                                        colInspectionTracker2,
+                                        'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "92-Day",
+                                        If(!IsBlank(LookUp(
+                                        colInspectionTracker2,
+                                        'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "92-Day").'OUT INSPECTION DATE'), 'INSP DUE DATE', Today()) 
+                                    )
+                                ),
+                                Value('OOS DAYS')
+                            )
+                        },
+                        If(
+                            OOSDays < 0,
+                            DateAdd(dpLast92Day.SelectedDate, 92 + DateDiff(LookUp('OOS History', Title = ddVehicle.Selected.'Coach/Cab/Locomotive').'OOS START', Today()) ),
+                            DateAdd(dpLast92Day.SelectedDate, 92 + OOSDays)
+                        )
+                    )
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Font: =App.Theme.Font
+                HoverDateFill: =App.Theme.Colors.Lighter70
+                IconBackground: =App.Theme.Colors.Primary
+                IconFill: =App.Theme.Colors.PrimaryForeground
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SelectedDateFill: =App.Theme.Colors.Primary
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey142.Y + DataCardKey142.Height + 5
+                ZIndex: =2
+
+            ErrorMessage141 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =dpOOSNext92Day.Y + dpOOSNext92Day.Height
+                ZIndex: =3
+
+            StarVisible141 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey142.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey142.Y
+                ZIndex: =4
+
+        "'LAST 184-DAY_DataCard1' As typedDataCard.dateEditCard":
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="LAST184_x002d_DAY"
+            Default: =
+            DisplayMode: =DisplayMode.View
+            DisplayName: =
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =dpLast184Day.SelectedDate
+            Visible: =false
+            Width: =288
+            X: =8
+            Y: =4
+            ZIndex: =1
+
+            DataCardKey146 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            dpLast184Day As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                CalendarHeaderFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: |-
+                    =   If(
+                        Dropdown12.SelectedText.'Vehicle Type' = "Cab",
+                        Blank(),
+                       CB184Day.Value && CB92Day.Value,
+                        DatePicker4.SelectedDate,
+                        LookUp(
+                            'Inspection Tracker 2.0', 'VEHICLE NO' = 
+                            Dropdown12_1.SelectedText.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "184-Day"
+                        ).'LAST INSP DATE'
+                    )
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Font: =App.Theme.Font
+                HoverDateFill: =App.Theme.Colors.Lighter70
+                IconBackground: =App.Theme.Colors.Primary
+                IconFill: =App.Theme.Colors.PrimaryForeground
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SelectedDateFill: =App.Theme.Colors.Primary
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey146.Y + DataCardKey146.Height + 5
+                ZIndex: =2
+
+            ErrorMessage145 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =dpLast184Day.Y + dpLast184Day.Height
+                ZIndex: =3
+
+            StarVisible145 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey146.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey146.Y
+                ZIndex: =4
+
+        "'NEXT 184-DAY_DataCard1' As typedDataCard.dateEditCard":
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="NEXT184_x002d_DAY"
+            Default: =
+            DisplayMode: =DisplayMode.View
+            DisplayName: =
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =dpNext184Day.SelectedDate
+            Visible: =false
+            Width: =288
+            X: =0
+            Y: =5
+            ZIndex: =1
+
+            DataCardKey147 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            dpNext184Day As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                CalendarHeaderFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: |-
+                    =If(
+                        dpLast92Day.SelectedDate = dpLast184Day.SelectedDate || IsBlank(dpLast92Day.SelectedDate),
+                        DateAdd(
+                            dpLast184Day.SelectedDate,
+                            184
+                        ),
+                        Dropdown12.SelectedText.'Vehicle Type' = "Cab",
+                        Blank(),
+                        dpLast92Day.SelectedDate <> dpLast184Day.SelectedDate,
+                        DateAdd(
+                            dpLast92Day.SelectedDate,
+                            92
+                        )
+                    )
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Font: =App.Theme.Font
+                HoverDateFill: =App.Theme.Colors.Lighter70
+                IconBackground: =App.Theme.Colors.Primary
+                IconFill: =App.Theme.Colors.PrimaryForeground
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SelectedDateFill: =App.Theme.Colors.Primary
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey147.Y + DataCardKey147.Height + 5
+                ZIndex: =2
+
+            ErrorMessage146 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =dpNext184Day.Y + dpNext184Day.Height
+                ZIndex: =3
+
+            StarVisible146 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey147.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey147.Y
+                ZIndex: =4
+
+        "'OOS NEXT 184-DAY_DataCard1' As typedDataCard.dateEditCard":
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="OOSNEXT184_x002d_DAY"
+            Default: =
+            DisplayMode: =DisplayMode.View
+            DisplayName: =
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =dpOOSNext184Day.SelectedDate
+            Visible: =false
+            Width: =288
+            X: =4
+            Y: =5
+            ZIndex: =1
+
+            DataCardKey148 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            dpOOSNext184Day As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                CalendarHeaderFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: |-
+                    =If(
+                        Dropdown12.SelectedText.'Vehicle Type' = "Cab",
+                        Blank(),
+                        
+                        dpLast92Day.SelectedDate = dpLast184Day.SelectedDate || IsBlank(dpLast92Day.SelectedDate),
+                        With(
+                            {
+                                OOSDays: Sum(
+                                    Filter(
+                                        colOOSHistory,
+                                        Title = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'OOS START' >= LookUp(
+                                            colInspectionTracker2,
+                                            'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "184-Day",
+                                            'LAST INSP DATE'
+                                        ) && 'OOS END' <= LookUp(
+                                            colInspectionTracker2,
+                                            'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "184-Day",
+                                            If(
+                                                !IsBlank(
+                                                    LookUp(
+                                                        colInspectionTracker2,
+                                                        'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "184-Day"
+                                                    ).'OUT INSPECTION DATE'
+                                                ),
+                                                'INSP DUE DATE',
+                                                Today()
+                                            )
+                                        )
+                                    ),
+                                    Value('OOS DAYS')
+                                )
+                            },
+                            If(
+                                OOSDays < 0,
+                                DateAdd(
+                                    dpLast184Day.SelectedDate,
+                                    184 + DateDiff(
+                                        LookUp(
+                                            'OOS History',
+                                            Title = ddVehicle.Selected.'Coach/Cab/Locomotive'
+                                        ).'OOS START',
+                                        Today()
+                                    )
+                                ),
+                                DateAdd(
+                                    dpLast184Day.SelectedDate,
+                                    184 + OOSDays
+                                )
+                            )
+                        ),
+                        With(
+                            {
+                                OOSDays: Sum(
+                                    Filter(
+                                        colOOSHistory,
+                                        Title = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'OOS START' >= LookUp(
+                                            colInspectionTracker2,
+                                            'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "92-Day",
+                                            'LAST INSP DATE'
+                                        ) && 'OOS END' <= LookUp(
+                                            colInspectionTracker2,
+                                            'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "92-Day",
+                                            If(
+                                                !IsBlank(
+                                                    LookUp(
+                                                        'Inspection Tracker 2.0',
+                                                        'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "92-Day"
+                                                    ).'OUT INSPECTION DATE'
+                                                ),
+                                                'INSP DUE DATE',
+                                                Today()
+                                            )
+                                        )
+                                    ),
+                                    Value('OOS DAYS')
+                                )
+                            },
+                            If(
+                                OOSDays < 0,
+                                DateAdd(
+                                    dpLast92Day.SelectedDate,
+                                    92 + DateDiff(
+                                        LookUp(
+                                            'OOS History',
+                                            Title = ddVehicle.Selected.'Coach/Cab/Locomotive'
+                                        ).'OOS START',
+                                        Today()
+                                    )
+                                ),
+                                DateAdd(
+                                    dpLast92Day.SelectedDate,
+                                    92 + OOSDays
+                                )
+                            )
+                        )
+                    )
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Font: =App.Theme.Font
+                HoverDateFill: =App.Theme.Colors.Lighter70
+                IconBackground: =App.Theme.Colors.Primary
+                IconFill: =App.Theme.Colors.PrimaryForeground
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SelectedDateFill: =App.Theme.Colors.Primary
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey148.Y + DataCardKey148.Height + 5
+                ZIndex: =2
+
+            ErrorMessage147 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =dpOOSNext184Day.Y + dpOOSNext184Day.Height
+                ZIndex: =3
+
+            StarVisible147 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey148.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey148.Y
+                ZIndex: =4
+
+        "'NEXT 368-DAY_DataCard1' As typedDataCard.dateEditCard":
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="NEXT_x0020_368_x002d_DAY"
+            Default: =
+            DisplayMode: =DisplayMode.View
+            DisplayName: =
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =dpNext368Day.SelectedDate
+            Visible: =false
+            Width: =288
+            X: =8
+            Y: =5
+            ZIndex: =1
+
+            DataCardKey134 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            dpNext368Day As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                CalendarHeaderFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: =DateAdd(dpLast368Day.SelectedDate,368)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Font: =App.Theme.Font
+                HoverDateFill: =App.Theme.Colors.Lighter70
+                IconBackground: =App.Theme.Colors.Primary
+                IconFill: =App.Theme.Colors.PrimaryForeground
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SelectedDateFill: =App.Theme.Colors.Primary
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey134.Y + DataCardKey134.Height + 5
+                ZIndex: =2
+
+            ErrorMessage133 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =dpNext368Day.Y + dpNext368Day.Height
+                ZIndex: =3
+
+            StarVisible133 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey134.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey134.Y
+                ZIndex: =4
+
+        "'OOS NEXT 368-DAY_DataCard1' As typedDataCard.dateEditCard":
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="OOS_x0020_NEXT_x0020_368_x002d_D"
+            Default: =
+            DisplayMode: =DisplayMode.View
+            DisplayName: =
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =dpOOSNext368Day.SelectedDate
+            Visible: =false
+            Width: =288
+            X: =0
+            Y: =6
+            ZIndex: =1
+
+            DataCardKey143 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            dpOOSNext368Day As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                CalendarHeaderFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: |
+                    =With(
+                        {
+                            OOSDays: Sum(
+                                Filter(
+                                    colOOSHistory,
+                                    Title = ddVehicle.Selected.'Coach/Cab/Locomotive' &&
+                                    'OOS START' >= LookUp(
+                                        colInspectionTracker2,
+                                        'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "368-Day",
+                                        'LAST INSP DATE'
+                                    ) &&
+                                    'OOS END' <= LookUp(
+                                        colInspectionTracker2,
+                                        'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "368-Day",
+                                        If(!IsBlank(LookUp(
+                                        colInspectionTracker2,
+                                        'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "368-Day").'OUT INSPECTION DATE'), 'INSP DUE DATE', Today()) 
+                                    )
+                                ),
+                                Value('OOS DAYS')
+                            )
+                        },
+                        If(
+                            OOSDays < 0,
+                            DateAdd(dpLast368Day.SelectedDate, 368 + DateDiff(LookUp('OOS History', Title = ddVehicle.Selected.'Coach/Cab/Locomotive').'OOS START', Today()) ),
+                            DateAdd(dpLast368Day.SelectedDate, 368 + OOSDays)
+                        )
+                    )
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Font: =App.Theme.Font
+                HoverDateFill: =App.Theme.Colors.Lighter70
+                IconBackground: =App.Theme.Colors.Primary
+                IconFill: =App.Theme.Colors.PrimaryForeground
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SelectedDateFill: =App.Theme.Colors.Primary
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey143.Y + DataCardKey143.Height + 5
+                ZIndex: =2
+
+            ErrorMessage142 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =dpOOSNext368Day.Y + dpOOSNext368Day.Height
+                ZIndex: =3
+
+            StarVisible142 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey143.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey143.Y
+                ZIndex: =4
+
+        "'NEXT 1104-DAY_DataCard1' As typedDataCard.dateEditCard":
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="NEXT_x0020_1104_x002d_DAY"
+            Default: =
+            DisplayMode: =DisplayMode.View
+            DisplayName: =
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =dpNext1104Day.SelectedDate
+            Visible: =false
+            Width: =288
+            X: =4
+            Y: =6
+            ZIndex: =1
+
+            DataCardKey141 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            dpNext1104Day As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                CalendarHeaderFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: =DateAdd(dpLast1104Day.SelectedDate,1104)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Font: =App.Theme.Font
+                HoverDateFill: =App.Theme.Colors.Lighter70
+                IconBackground: =App.Theme.Colors.Primary
+                IconFill: =App.Theme.Colors.PrimaryForeground
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SelectedDateFill: =App.Theme.Colors.Primary
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey141.Y + DataCardKey141.Height + 5
+                ZIndex: =2
+
+            ErrorMessage140 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =dpNext1104Day.Y + dpNext1104Day.Height
+                ZIndex: =3
+
+            StarVisible140 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey141.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey141.Y
+                ZIndex: =4
+
+        "'OOS NEXT 1104-DAY_DataCard1' As typedDataCard.dateEditCard":
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="OOS_x0020_NEXT_x0020_1104_x002d_"
+            Default: =
+            DisplayMode: =DisplayMode.View
+            DisplayName: =
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =dpOOSNext1104Day.SelectedDate
+            Visible: =false
+            Width: =288
+            X: =8
+            Y: =6
+            ZIndex: =1
+
+            DataCardKey145 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            dpOOSNext1104Day As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                CalendarHeaderFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: |-
+                    =If(Dropdown12.SelectedText.'Vehicle Type' = "Cab",
+                        Blank(),
+                        With(
+                        {
+                            inspRecord: LookUp(
+                                colInspectionTracker2,
+                                'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "1104-Day"
+                            )
+                        },
+                        With(
+                            {
+                                startWindow: DateAdd(
+                                    inspRecord.'LAST INSP DATE',
+                                    1104 - 368
+                                ),
+                                endWindow: If(
+                                    !IsBlank(inspRecord.'OUT INSPECTION DATE'),
+                                    inspRecord.'INSP DUE DATE',
+                                    Today()
+                                )
+                            },
+                            With(
+                                {
+                                    OOSDays: Sum(
+                                        Filter(
+                                            colOOSHistory,
+                                            Title = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'OOS START' >= startWindow && 'OOS END' <= endWindow
+                                        ),
+                                        Value('OOS DAYS')
+                                    )
+                                },
+                                If(
+                                    OOSDays < 0,
+                                    DateAdd(
+                                        dpLast1104Day.SelectedDate,
+                                        1104 + DateDiff(
+                                            LookUp(
+                                                'OOS History',
+                                               Title = ddVehicle.Selected.'Coach/Cab/Locomotive'
+                                            ).'OOS START',
+                                            Today()
+                                        )
+                                    ),
+                                    DateAdd(
+                                        dpLast1104Day.SelectedDate,
+                                        1104
+                                    )
+                                )
+                            )
+                        )
+                    ))
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Font: =App.Theme.Font
+                HoverDateFill: =App.Theme.Colors.Lighter70
+                IconBackground: =App.Theme.Colors.Primary
+                IconFill: =App.Theme.Colors.PrimaryForeground
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SelectedDateFill: =App.Theme.Colors.Primary
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey145.Y + DataCardKey145.Height + 5
+                ZIndex: =2
+
+            ErrorMessage144 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =dpOOSNext1104Day.Y + dpOOSNext1104Day.Height
+                ZIndex: =3
+
+            StarVisible144 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey145.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey145.Y
+                ZIndex: =4
+
+        "'NEXT 1472-DAY_DataCard1' As typedDataCard.dateEditCard":
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="NEXT_x0020_1472_x002d_DAY"
+            Default: =
+            DisplayMode: =DisplayMode.View
+            DisplayName: =
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =dpNext1472Day.SelectedDate
+            Visible: =false
+            Width: =288
+            X: =0
+            Y: =7
+            ZIndex: =1
+
+            DataCardKey138 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            dpNext1472Day As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                CalendarHeaderFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: =DateAdd(dpLast1472Day.SelectedDate,1472)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Font: =App.Theme.Font
+                HoverDateFill: =App.Theme.Colors.Lighter70
+                IconBackground: =App.Theme.Colors.Primary
+                IconFill: =App.Theme.Colors.PrimaryForeground
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SelectedDateFill: =App.Theme.Colors.Primary
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey138.Y + DataCardKey138.Height + 5
+                ZIndex: =2
+
+            ErrorMessage137 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =dpNext1472Day.Y + dpNext1472Day.Height
+                ZIndex: =3
+
+            StarVisible137 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey138.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey138.Y
+                ZIndex: =4
+
+        "'OOS NEXT 1472-DAY_DataCard1' As typedDataCard.dateEditCard":
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="OOS_x0020_NEXT_x0020_1472_x002d_"
+            Default: =
+            DisplayMode: =DisplayMode.View
+            DisplayName: =
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =dpOOSNext1472Day.SelectedDate
+            Visible: =false
+            Width: =216
+            X: =4
+            Y: =7
+            ZIndex: =1
+
+            DataCardKey144 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            dpOOSNext1472Day As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                CalendarHeaderFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: |
+                    =With(
+                        {
+                            OOSDays: Sum(
+                                Filter(
+                                    colOOSHistory,
+                                    Title = ddVehicle.Selected.'Coach/Cab/Locomotive' &&
+                                    'OOS START' >= LookUp(
+                                        colInspectionTracker2,
+                                        'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "1472-Day",
+                                        'LAST INSP DATE'
+                                    ) &&
+                                    'OOS END' <= LookUp(
+                                        colInspectionTracker2,
+                                        'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "1472-Day",
+                                        If(!IsBlank(LookUp(
+                                        colInspectionTracker2,
+                                        'VEHICLE NO' = ddVehicle.Selected.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "1472-Day").'OUT INSPECTION DATE'), 'INSP DUE DATE', Today()) 
+                                    )
+                                ),
+                                Value('OOS DAYS')
+                            )
+                        },
+                        If(
+                            OOSDays < 0,
+                            DateAdd(dpLast1472Day.SelectedDate, 1472 + DateDiff(LookUp('OOS History', Title = ddVehicle.Selected.'Coach/Cab/Locomotive').'OOS START', Today()) ),
+                            DateAdd(dpLast1472Day.SelectedDate, 1472 + OOSDays)
+                        )
+                    )
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Font: =App.Theme.Font
+                HoverDateFill: =App.Theme.Colors.Lighter70
+                IconBackground: =App.Theme.Colors.Primary
+                IconFill: =App.Theme.Colors.PrimaryForeground
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SelectedDateFill: =App.Theme.Colors.Primary
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey144.Y + DataCardKey144.Height + 5
+                ZIndex: =2
+
+            ErrorMessage143 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =dpOOSNext1472Day.Y + dpOOSNext1472Day.Height
+                ZIndex: =3
+
+            StarVisible143 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey144.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey144.Y
+                ZIndex: =4
+
+        "'LAST 92-DAY_DataCard1' As typedDataCard.dateEditCard":
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="LAST92_x002d_DAY"
+            Default: =
+            DisplayMode: =DisplayMode.View
+            DisplayName: =
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =dpLast92Day.SelectedDate
+            Visible: =false
+            Width: =288
+            X: =7
+            Y: =7
+            ZIndex: =14
+
+            DataCardKey108 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            dpLast92Day As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                CalendarHeaderFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: |-
+                    =If(
+                        CB92Day.Value,
+                        DatePicker4.SelectedDate,
+                        LookUp(
+                            'Inspection Tracker 2.0', 'VEHICLE NO' = 
+                            Dropdown12_1.SelectedText.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "92-Day"
+                        ).'LAST INSP DATE'
+                    )
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Font: =App.Theme.Font
+                HoverDateFill: =App.Theme.Colors.Lighter70
+                IconBackground: =App.Theme.Colors.Primary
+                IconFill: =App.Theme.Colors.PrimaryForeground
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SelectedDateFill: =App.Theme.Colors.Primary
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey108.Y + DataCardKey108.Height + 5
+                ZIndex: =2
+
+            ErrorMessage110 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =dpLast92Day.Y + dpLast92Day.Height
+                ZIndex: =3
+
+            StarVisible110 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey108.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey108.Y
+                ZIndex: =4
+
+        "'LAST 368-DAY_DataCard1' As typedDataCard.dateEditCard":
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="LAST368_x002d_DAY"
+            Default: =
+            DisplayMode: =DisplayMode.View
+            DisplayName: =
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =dpLast368Day.SelectedDate
+            Visible: =false
+            Width: =288
+            X: =0
+            Y: =8
+            ZIndex: =14
+
+            DataCardKey112 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            dpLast368Day As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                CalendarHeaderFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: |-
+                    =If(
+                        CB368Day.Value,
+                        DatePicker4.SelectedDate,
+                        LookUp(
+                            'Inspection Tracker 2.0', 'VEHICLE NO' =
+                            Dropdown12_1.SelectedText.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "368-Day"
+                        ).'LAST INSP DATE'
+                    )
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Font: =App.Theme.Font
+                HoverDateFill: =App.Theme.Colors.Lighter70
+                IconBackground: =App.Theme.Colors.Primary
+                IconFill: =App.Theme.Colors.PrimaryForeground
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SelectedDateFill: =App.Theme.Colors.Primary
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey112.Y + DataCardKey112.Height + 5
+                ZIndex: =2
+
+            ErrorMessage111 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =dpLast368Day.Y + dpLast368Day.Height
+                ZIndex: =3
+
+            StarVisible111 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey112.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey112.Y
+                ZIndex: =4
+
+        "'LAST 1104-DAY_DataCard1' As typedDataCard.dateEditCard":
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="LAST1104_x002d_DAY"
+            Default: =
+            DisplayMode: =DisplayMode.View
+            DisplayName: =
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =dpLast1104Day.SelectedDate
+            Visible: =false
+            Width: =288
+            X: =4
+            Y: =8
+            ZIndex: =14
+
+            DataCardKey118 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            dpLast1104Day As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                CalendarHeaderFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: |-
+                    =If(
+                        Dropdown12.SelectedText.'Vehicle Type' = "Cab",
+                        Blank(),
+                        CB1104Day.Value,
+                        DatePicker4.SelectedDate,
+                        LookUp(
+                            'Inspection Tracker 2.0', 'VEHICLE NO' =
+                            Dropdown12_1.SelectedText.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "1104-Day"
+                        ).'LAST INSP DATE'
+                    )
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Font: =App.Theme.Font
+                HoverDateFill: =App.Theme.Colors.Lighter70
+                IconBackground: =App.Theme.Colors.Primary
+                IconFill: =App.Theme.Colors.PrimaryForeground
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SelectedDateFill: =App.Theme.Colors.Primary
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey118.Y + DataCardKey118.Height + 5
+                ZIndex: =2
+
+            ErrorMessage117 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =dpLast1104Day.Y + dpLast1104Day.Height
+                ZIndex: =3
+
+            StarVisible117 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey118.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey118.Y
+                ZIndex: =4
+
+        "'LAST 1472-DAY_DataCard1' As typedDataCard.dateEditCard":
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="LAST1472_x002d_DAY"
+            Default: =
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Inspection Tracker 2.0'],DataSourceInfo.DisplayName,field_4)
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =dpLast1472Day.SelectedDate
+            Visible: =false
+            Width: =288
+            X: =8
+            Y: =8
+            ZIndex: =14
+
+            DataCardKey125 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            dpLast1472Day As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                CalendarHeaderFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: |-
+                    =If(
+                        CB1472Day.Value,
+                        DatePicker4.SelectedDate,
+                        LookUp(
+                            'Inspection Tracker 2.0', 'VEHICLE NO' =
+                            Dropdown12_1.SelectedText.'Coach/Cab/Locomotive' && 'NEXT INSPECTION' = "1472-Day"
+                        ).'LAST INSP DATE'
+                    )
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Font: =App.Theme.Font
+                HoverDateFill: =App.Theme.Colors.Lighter70
+                IconBackground: =App.Theme.Colors.Primary
+                IconFill: =App.Theme.Colors.PrimaryForeground
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SelectedDateFill: =App.Theme.Colors.Primary
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey125.Y + DataCardKey125.Height + 5
+                ZIndex: =2
+
+            ErrorMessage124 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =dpLast1472Day.Y + dpLast1472Day.Height
+                ZIndex: =3
+
+            StarVisible124 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey125.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey125.Y
+                ZIndex: =4
+
+    Label40_17 As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =57
+        Size: =13
+        Text: ="VECHILE NO"
+        Width: =80
+        Y: =129
+        ZIndex: =10
+
+    Label40_18 As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =57
+        Size: =13
+        Text: ="OOS START"
+        Width: =115
+        X: =80
+        Y: =129
+        ZIndex: =11
+
+    Label40_20 As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =57
+        Size: =13
+        Text: ="OOS END"
+        Width: =115
+        X: =195
+        Y: =129
+        ZIndex: =12
+
+    Label40_21 As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =57
+        Size: =13
+        Text: ="DAYS"
+        Width: =66
+        X: =310
+        Y: =129
+        ZIndex: =13
+
+    Icon10 As icon.Database:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =App.Theme.Colors.Darker30
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =51
+        Icon: =Icon.Database
+        OnSelect: |-
+            =UpdateContext({ var184Day: false, var92Day: false, var1472Day: false, var1104Day: false, var368Day:false });
+            Navigate('PM-Dashboard')
+        Width: =51
+        X: =75
+        ZIndex: =14
+
+    Gallery4_6 As gallery.variableTemplateHeightGallery:
+        BorderColor: =App.Theme.Colors.Darker40
+        DelayItemLoading: =true
+        Height: =405
+        Items: |-
+            =
+                Filter(colOOSHistory,Title = ddVehicle.Selected.'Coach/Cab/Locomotive') 
+                
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: =EditForm(FormInspDate)
+        TemplatePadding: =0
+        TemplateSize: =38
+        Width: =481
+        Y: =186
+        ZIndex: =15
+
+        Label37_2 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisplayMode: =DisplayMode.View
+            Font: =App.Theme.Font
+            Height: =38
+            OnSelect: =Select(Parent)
+            Size: =13
+            Text: =ThisItem.Title
+            Width: =80
+            ZIndex: =2
+
+        DatePicker5 As datepicker:
+            BorderColor: =App.Theme.Colors.Darker40
+            CalendarHeaderFill: =App.Theme.Colors.Primary
+            Color: =RGBA(0, 0, 0, 1)
+            DefaultDate: =ThisItem.'OOS START'
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(0, 0, 0, 0)
+            Font: =App.Theme.Font
+            Height: =38
+            HoverDateFill: =App.Theme.Colors.Lighter70
+            IconBackground: =App.Theme.Colors.Primary
+            IconFill: =App.Theme.Colors.PrimaryForeground
+            OnSelect: =Select(Parent)
+            SelectedDateFill: =App.Theme.Colors.Primary
+            Size: =13
+            Width: =115
+            X: =80
+            ZIndex: =3
+
+        DatePicker5_1 As datepicker:
+            BorderColor: =App.Theme.Colors.Darker40
+            CalendarHeaderFill: =App.Theme.Colors.Primary
+            Color: =RGBA(0, 0, 0, 1)
+            DefaultDate: =ThisItem.'OOS END'
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(0, 0, 0, 0)
+            Font: =App.Theme.Font
+            Height: =38
+            HoverDateFill: =App.Theme.Colors.Lighter70
+            IconBackground: =App.Theme.Colors.Primary
+            IconFill: =App.Theme.Colors.PrimaryForeground
+            OnSelect: =Select(Parent)
+            SelectedDateFill: =App.Theme.Colors.Primary
+            Size: =13
+            Width: =115
+            X: =196
+            ZIndex: =4
+
+        Label45 As label:
+            Align: =Align.Center
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            Height: =38
+            OnSelect: =Select(Parent)
+            Size: =13
+            Text: =If(IsBlank(ThisItem.'OOS END'), "OOS", Value(ThisItem.'OOS DAYS'))
+            Width: =63
+            X: =310
+            ZIndex: =5
+
+        Icon12 As icon.Trash:
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: ='UTA-LightBlue'.Fill
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =28
+            Icon: =Icon.Trash
+            OnSelect: |-
+                =Remove(
+                    'OOS History',
+                    ThisItem
+                );
+                Refresh('OOS History');
+                ClearCollect(
+                    colOOSHistory,
+                    'OOS History'
+                )
+            Width: =45
+            X: =428
+            Y: =5
+            ZIndex: =6
+
+        Icon13 As icon.Edit:
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: =Color.DimGrey
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =28
+            Icon: =Icon.Edit
+            OnSelect: |-
+                =Set(varFormFM, FormMode.Edit);
+                ClearCollect(colHist, Gallery4_6.Selected);
+                Set(varForm5, false);
+                Set(varOOSHis, true)
+            Width: =45
+            X: =377
+            Y: =5
+            ZIndex: =7
+
+    Label43_18 As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =74
+        Size: =28
+        Text: ="OOS History"
+        Width: =481
+        Y: =53
+        ZIndex: =16
+
+    Label40_22 As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =57
+        PaddingLeft: =3
+        Size: =13
+        Text: ="Edit"
+        Width: =46
+        X: =376
+        Y: =127
+        ZIndex: =17
+
+    Label40_23 As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =57
+        PaddingLeft: =3
+        PaddingRight: =3
+        Size: =13
+        Text: ="Delete"
+        Width: =56
+        X: =424
+        Y: =127
+        ZIndex: =18
+
+    Form5 As form:
+        BorderColor: =App.Theme.Colors.Darker40
+        DataSource: ='OOS History'
+        DefaultMode: =varFormFM
+        Fill: ='UTA-Gray'.Fill
+        Height: =708
+        Item: =Gallery4_6.Selected
+        NumberOfColumns: =12
+        Visible: =varOOSHis
+        Width: =482
+        Y: =51
+        ZIndex: =19
+
+        "'VEHICLE NO_DataCard2' As typedDataCard.allowedValuesStringEditCard":
+            AllowedValues: =DataSourceInfo([@'OOS History'], DataSourceInfo.AllowedValues, Title)
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="VEHICLENO"
+            Default: =ThisItem.Title
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'OOS History'],DataSourceInfo.DisplayName, Title)
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =
+            Width: =480
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey156 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: ="VEHICLE NO"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue137 As dropdown:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                ChevronBackground: =App.Theme.Colors.Primary
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronFill: =App.Theme.Colors.PrimaryForeground
+                ChevronHoverBackground: =App.Theme.Colors.Darker10
+                ChevronHoverFill: =App.Theme.Colors.PrimaryForeground
+                Default: =ThisItem.Title
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Font: =App.Theme.Font
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =App.Theme.Colors.Lighter70
+                Items: =ddVehicle.SelectedText
+                PressedColor: =App.Theme.Colors.PrimaryForeground
+                PressedFill: =App.Theme.Colors.Darker30
+                SelectionColor: =App.Theme.Colors.PrimaryForeground
+                SelectionFill: =App.Theme.Colors.Primary
+                Size: =13
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey156.Y + DataCardKey156.Height + 5
+                ZIndex: =2
+
+            ErrorMessage153 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue137.Y + DataCardValue137.Height
+                ZIndex: =3
+
+            StarVisible153 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey156.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey156.Y
+                ZIndex: =4
+
+        REASON_DataCard2 As typedDataCard.allowedValuesStringEditCard:
+            AllowedValues: =DataSourceInfo([@'OOS History'], DataSourceInfo.AllowedValues, 'REASON')
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="REASON"
+            Default: =ThisItem.REASON
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'OOS History'],DataSourceInfo.DisplayName,'REASON')
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue139.Selected.Value
+            Width: =320
+            X: =0
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey157 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue139 As dropdown:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                ChevronBackground: =App.Theme.Colors.Primary
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronFill: =App.Theme.Colors.PrimaryForeground
+                ChevronHoverBackground: =App.Theme.Colors.Darker10
+                ChevronHoverFill: =App.Theme.Colors.PrimaryForeground
+                Default: =Parent.Default
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                Font: =App.Theme.Font
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =App.Theme.Colors.Lighter70
+                Items: =["SCHEDULED", "UNSCHEDULED"]
+                PressedColor: =App.Theme.Colors.PrimaryForeground
+                PressedFill: =App.Theme.Colors.Darker30
+                SelectionColor: =App.Theme.Colors.PrimaryForeground
+                SelectionFill: =App.Theme.Colors.Primary
+                Size: =13
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey157.Y + DataCardKey157.Height + 5
+                ZIndex: =2
+
+            ErrorMessage154 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue139.Y + DataCardValue139.Height
+                ZIndex: =3
+
+            StarVisible154 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey157.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey157.Y
+                ZIndex: =4
+
+        NOTES_DataCard4 As typedDataCard.textualMultiLineEditCard:
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="NOTES"
+            Default: =ThisItem.NOTES
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'OOS History'],DataSourceInfo.DisplayName,'NOTES')
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue140.Text
+            Width: =480
+            X: =0
+            Y: =3
+            ZIndex: =1
+
+            DataCardKey158 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue140 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                BorderThickness: =2
+                Color: =RGBA(0, 0, 0, 1)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                FocusedBorderThickness: =4
+                Font: =App.Theme.Font
+                Height: =80
+                HoverBorderColor: =App.Theme.Colors.Darker40
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =App.Theme.Colors.Lighter70
+                Mode: =TextMode.MultiLine
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Size: =13
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey158.Y + DataCardKey158.Height + 5
+                ZIndex: =2
+
+            ErrorMessage155 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue140.Y + DataCardValue140.Height
+                ZIndex: =3
+
+            StarVisible155 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey158.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey158.Y
+                ZIndex: =4
+
+        DataCard26 As typedDataCard.blankCard:
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =128
+            Width: =480
+            X: =0
+            Y: =4
+            ZIndex: =1
+
+            Button31 As button:
+                BorderColor: =App.Theme.Colors.Primary
+                Color: =App.Theme.Colors.PrimaryForeground
+                DisabledBorderColor: =RGBA(244, 244, 244, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =App.Theme.Colors.Primary
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                HoverBorderColor: =App.Theme.Colors.Darker10
+                HoverColor: =App.Theme.Colors.PrimaryForeground
+                HoverFill: =App.Theme.Colors.Darker10
+                OnSelect: |-
+                    =
+                    Patch(
+                        colOOSHistory,
+                        If(
+                            varFormFM = FormMode.New,
+                            Defaults(colOOSHistory), varFormFM=FormMode.Edit,
+                            LookUp(
+                                colOOSHistory,
+                                Title = DataCardValue137.Selected.'Coach/Cab/Locomotive' && 'OOS START' =  Gallery4_6.Selected.'OOS START'
+                            )
+                        ),
+                        { 
+                            Title: DataCardValue137.Selected.'Coach/Cab/Locomotive',
+                            'OOS START': DataCardValue112.SelectedDate,
+                            'OOS END': DataCardValue116.SelectedDate,
+                            REASON: DataCardValue139.Selected.Value,
+                            NOTES: DataCardValue140.Text
+                        }
+                    )
+                    ;
+                    Set(
+                        varOOSHis,
+                        false
+                    );
+                    Set(
+                        varChooseVehicle,
+                        true
+                    );
+                    UpdateContext(
+                        {
+                            var1472Day: false,
+                            var1104Day: false,
+                            var368Day: false,
+                            var184Day: false,
+                            var92Day: false,
+                            varOut30: false,
+                            varOutInsp: false
+                        }
+                    );
+                    ClearCollect(
+                        colOOSHistory,
+                        'OOS History'
+                    );
+                    Refresh('Inspection Tracker 2.0')
+                PressedBorderColor: =App.Theme.Colors.Darker40
+                PressedColor: =Self.Color
+                PressedFill: =App.Theme.Colors.Darker40
+                Size: =15
+                Text: ="Submit"
+                X: =288
+                Y: =52
+                ZIndex: =1
+
+            Button31_1 As button:
+                BorderColor: =App.Theme.Colors.Primary
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =0
+                Color: =App.Theme.Colors.PrimaryForeground
+                DisabledBorderColor: =RGBA(244, 244, 244, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: ='UTA-LightGray'.Fill
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                HoverBorderColor: =App.Theme.Colors.Darker10
+                HoverColor: =App.Theme.Colors.PrimaryForeground
+                HoverFill: =App.Theme.Colors.Darker10
+                OnSelect: |-
+                    =UpdateContext(
+                        {
+                            var1472Day: false,
+                            var1104Day: false,
+                            var368Day: false,
+                            var184Day: false,
+                            var92Day: false,
+                            varOut30: false,
+                            varOutInsp: false
+                        }
+                    );Set(varOOSHis, false);
+                PressedBorderColor: =App.Theme.Colors.Darker40
+                PressedColor: =Self.Color
+                PressedFill: =App.Theme.Colors.Darker40
+                Size: =15
+                Text: ="Cancel"
+                Width: =101
+                X: =152
+                Y: =52
+                ZIndex: =2
+
+        "'OOS START_DataCard2' As typedDataCard.dateEditCard":
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="OOSSTART"
+            Default: =ThisItem.'OOS START'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'OOS History'],DataSourceInfo.DisplayName,'OOS START')
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue112.SelectedDate
+            Width: =240
+            X: =0
+            Y: =1
+            ZIndex: =24
+
+            DataCardKey149 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue112 As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                CalendarHeaderFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: =Parent.Default
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Font: =App.Theme.Font
+                HoverDateFill: =App.Theme.Colors.Lighter70
+                IconBackground: =App.Theme.Colors.Primary
+                IconFill: =App.Theme.Colors.PrimaryForeground
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SelectedDateFill: =App.Theme.Colors.Primary
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey149.Y + DataCardKey149.Height + 5
+                ZIndex: =2
+
+            ErrorMessage148 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue112.Y + DataCardValue112.Height
+                ZIndex: =3
+
+            StarVisible148 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey149.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey149.Y
+                ZIndex: =4
+
+        "'OOS END_DataCard2' As typedDataCard.dateEditCard":
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="OOSEND"
+            Default: =ThisItem.'OOS END'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@'OOS History'],DataSourceInfo.DisplayName,field_2)
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =false
+            Update: =DataCardValue116.SelectedDate
+            Width: =240
+            X: =6
+            Y: =1
+            ZIndex: =24
+
+            DataCardKey150 As label:
+                AutoHeight: =true
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =34
+                Size: =13
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue116 As datepicker:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                CalendarHeaderFill: =App.Theme.Colors.Primary
+                Color: =RGBA(0, 0, 0, 1)
+                DefaultDate: =Parent.Default
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                EndYear: =Year(Today())+100
+                Font: =App.Theme.Font
+                HoverDateFill: =App.Theme.Colors.Lighter70
+                IconBackground: =App.Theme.Colors.Primary
+                IconFill: =App.Theme.Colors.PrimaryForeground
+                IsEditable: =true
+                PaddingBottom: =0
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SelectedDateFill: =App.Theme.Colors.Primary
+                StartYear: =1899
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey150.Y + DataCardKey150.Height + 5
+                ZIndex: =2
+
+            ErrorMessage149 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue116.Y + DataCardValue116.Height
+                ZIndex: =3
+
+            StarVisible149 As label:
+                Align: =Align.Center
+                Color: =App.Theme.Colors.Darker30
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =DataCardKey150.Height
+                Size: =13
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey150.Y
+                ZIndex: =4
+
+    Group9 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =26
+
+        Rectangle19 As rectangle:
+            BorderColor: =Color.Black
+            BorderThickness: =2
+            Fill: =RGBA(255, 255, 255, 0.95)
+            Height: =590
+            Visible: =varChooseVehicle
+            Width: =1203
+            X: =38
+            Y: =85
+            ZIndex: =20
+
+        DataCardKey151_1 As label:
+            Align: =Align.Right
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            Height: =25
+            Size: =16
+            Text: |-
+                ="VEHICLE TYPE:"
+            Visible: =varChooseVehicle
+            Wrap: =false
+            X: =195
+            Y: =370
+            ZIndex: =21
+
+        DataCardValue138 As dropdown:
+            BorderColor: =
+            ChevronBackground: =App.Theme.Colors.Primary
+            ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+            ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+            ChevronFill: =App.Theme.Colors.PrimaryForeground
+            ChevronHoverBackground: =App.Theme.Colors.Darker10
+            ChevronHoverFill: =App.Theme.Colors.PrimaryForeground
+            Default: =
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =
+            Font: =App.Theme.Font
+            Height: =44
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =App.Theme.Colors.Lighter70
+            Items: =Distinct('Loco/Cab/Coach', 'Vehicle Type')
+            PressedColor: =App.Theme.Colors.PrimaryForeground
+            PressedFill: =App.Theme.Colors.Darker30
+            SelectionColor: =App.Theme.Colors.PrimaryForeground
+            SelectionFill: =App.Theme.Colors.Primary
+            Size: =13
+            Tooltip: =
+            Visible: =varChooseVehicle
+            Width: =150
+            X: =344
+            Y: =370
+            ZIndex: =22
+
+        DataCardKey149_1 As label:
+            Align: =Align.Right
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            Height: =25
+            Size: =16
+            Text: |-
+                ="VEHICLE NO:"
+            Visible: =varChooseVehicle
+            Wrap: =false
+            X: =587
+            Y: =370
+            ZIndex: =23
+
+        ddVehicle As dropdown:
+            BorderColor: =
+            ChevronBackground: =App.Theme.Colors.Primary
+            ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+            ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+            ChevronFill: =App.Theme.Colors.PrimaryForeground
+            ChevronHoverBackground: =App.Theme.Colors.Darker10
+            ChevronHoverFill: =App.Theme.Colors.PrimaryForeground
+            Default: =
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =
+            Font: =App.Theme.Font
+            Height: =44
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =App.Theme.Colors.Lighter70
+            Items: =Filter('Loco/Cab/Coach', 'Vehicle Type' = DataCardValue138.Selected.Value)
+            PressedColor: =App.Theme.Colors.PrimaryForeground
+            PressedFill: =App.Theme.Colors.Darker30
+            SelectionColor: =App.Theme.Colors.PrimaryForeground
+            SelectionFill: =App.Theme.Colors.Primary
+            Size: =13
+            Tooltip: =
+            Visible: =varChooseVehicle
+            Width: =150
+            X: =737
+            Y: =370
+            ZIndex: =24
+
+        DataCardKey151_2 As label:
+            Color: =Color.Black
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: =RGBA(209, 207, 206, 0.59)
+            Font: =App.Theme.Font
+            Height: =71
+            Size: =18
+            Text: ="Please select a vehicle to continue."
+            Visible: =varChooseVehicle
+            Width: =994
+            X: =126
+            Y: =222
+            ZIndex: =25
+
+        Button28 As button:
+            BorderColor: =App.Theme.Colors.Primary
+            Color: =App.Theme.Colors.PrimaryForeground
+            DisabledBorderColor: =RGBA(244, 244, 244, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =App.Theme.Colors.Primary
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
+            Height: =44
+            HoverBorderColor: =App.Theme.Colors.Darker10
+            HoverColor: =App.Theme.Colors.PrimaryForeground
+            HoverFill: =App.Theme.Colors.Darker10
+            OnSelect: |-
+                =Set(
+                    varChooseVehicle,
+                    false
+                );
+                UpdateContext(
+                    {
+                        var184Day: false,
+                        var92Day: false,
+                        var1472Day: false,
+                        var1104Day: false,
+                        var368Day: false
+                    }
+                )
+            PressedBorderColor: =App.Theme.Colors.Darker40
+            PressedColor: =Self.Color
+            PressedFill: =App.Theme.Colors.Darker40
+            Size: =15
+            Text: ="Continue"
+            Visible: =varChooseVehicle
+            X: =960
+            Y: =478
+            ZIndex: =26
+
+        Rectangle22 As rectangle:
+            BorderColor: =App.Theme.Colors.Darker40
+            Fill: =App.Theme.Colors.Primary
+            Height: =72
+            Visible: =varChooseVehicle
+            Width: =1203
+            X: =38
+            Y: =86
+            ZIndex: =27
+
+    Rectangle23 As rectangle:
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: =RGBA(255, 255, 255, 0.85)
+        Height: =767
+        Visible: =varWait
+        Width: =1366
+        ZIndex: =28
+
+    Image7 As image:
+        BorderColor: =App.Theme.Colors.Darker40
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Image: ='Bean Eater-0.8s-200px'
+        Visible: =varWait
+        X: =633
+        Y: =342
+        ZIndex: =29
+
+    Label46 As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Fill: =RGBA(232, 232, 232, 0.85)
+        Font: =App.Theme.Font
+        Height: =51
+        Size: =18
+        Text: ="Please wait for the record to update the server........"
+        Visible: =varWait
+        Width: =721
+        X: =301
+        Y: =242
+        ZIndex: =30
+
+    Rectangle24 As rectangle:
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: =RGBA(255, 255, 255, 0.9)
+        Height: =714
+        Visible: =varWait
+        Width: =1363
+        Y: =53
+        ZIndex: =31
+
+    OOSDAYAPPLIED As dropdown:
+        AllowEmptySelection: =true
+        BorderColor: =App.Theme.Colors.Darker40
+        ChevronBackground: =App.Theme.Colors.Primary
+        ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+        ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+        ChevronFill: =App.Theme.Colors.PrimaryForeground
+        ChevronHoverBackground: =App.Theme.Colors.Darker10
+        ChevronHoverFill: =App.Theme.Colors.PrimaryForeground
+        Default: =
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Font: =App.Theme.Font
+        HoverColor: =RGBA(0, 0, 0, 1)
+        HoverFill: =App.Theme.Colors.Lighter70
+        Items: =["Yes","No"]
+        PressedColor: =App.Theme.Colors.PrimaryForeground
+        PressedFill: =App.Theme.Colors.Darker30
+        SelectionColor: =App.Theme.Colors.PrimaryForeground
+        SelectionFill: =App.Theme.Colors.Primary
+        Size: =13
+        Visible: =varWait
+        Width: =210
+        X: =771
+        Y: =277
+        ZIndex: =32
+
+    Label42 As label:
+        Align: =Align.Right
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =65
+        Text: ="Was Out of Service Credit used for this inspection?"
+        Visible: =varWait
+        Width: =428
+        X: =341
+        Y: =265
+        ZIndex: =33
+
+    Button34 As button:
+        BorderColor: =App.Theme.Colors.Primary
+        Color: =App.Theme.Colors.PrimaryForeground
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =App.Theme.Colors.Primary
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        HoverBorderColor: =App.Theme.Colors.Darker10
+        HoverColor: =App.Theme.Colors.PrimaryForeground
+        HoverFill: =App.Theme.Colors.Darker10
+        OnSelect: |-
+            =ClearCollect(
+                colInspHis,
+                'Inspection History'
+            );
+            If(
+                Dropdown12.Selected.'Vehicle Type' = "Coach",
+                "",
+                With(
+                    {
+                        InspID92: Concatenate(
+                            ddVehicle.Selected.'Coach/Cab/Locomotive',
+                            "-92-",
+                            dpLast92Day.SelectedDate
+                        )
+                    },
+                    If(
+                        IsBlank(
+                            LookUp(
+                                colInspHis,
+                                Title = InspID92
+                            )
+                        ),
+                        Patch(
+                            'Inspection History',
+                            Defaults('Inspection History'),
+                            {
+                                Title: ddVehicle.Selected.'Coach/Cab/Locomotive',
+                                'INSPECTION TYPE': "92-Day",
+                                'LAST INSP DATE': dpLast92Day.SelectedDate,
+                                'INSP DUE DATE': dpNext92Day.SelectedDate,
+                                'DUE DATE WITH OOS CREDIT': dpOOSNext92Day.SelectedDate,
+                                'OUT INSP DATE': OUTINSPDATE.SelectedDate,
+                                'File name with extension': InspID92,
+                                EMPLOYEE: User().FullName,
+                                TIMESTAMP: Now(),
+                                'OOS DAYS APPLIED': OOSDAYAPPLIED.SelectedText.Value,
+                                'VEHICLE TYPE': Dropdown12.Selected.'Vehicle Type'
+                            }
+                        )
+                    )
+                )
+            );
+            If(
+                Dropdown12.Selected.'Vehicle Type' = "Cab",
+                "",
+                With(
+                    {
+                        InspID184: Concatenate(
+                            ddVehicle.Selected.'Coach/Cab/Locomotive',
+                            "-184-",
+                            dpLast184Day.SelectedDate
+                        )
+                    },
+                    If(
+                        IsBlank(
+                            LookUp(
+                                colInspHis,
+                                'File name with extension' = InspID184
+                            )
+                        ),
+                        Patch(
+                            'Inspection History',
+                            Defaults('Inspection History'),
+                            {
+                                'VEHICLE NO': ddVehicle.Selected.'Coach/Cab/Locomotive',
+                                'INSPECTION TYPE': "184-Day",
+                                'LAST INSP DATE': dpLast184Day.SelectedDate,
+                                'INSP DUE DATE': dpNext184Day.SelectedDate,
+                                'DUE DATE WITH OOS CREDIT': dpOOSNext184Day.SelectedDate,
+                                'OUT INSP DATE': OUTINSPDATE.SelectedDate,
+                                Title: InspID184,
+                                EMPLOYEE: User().FullName,
+                                TIMESTAMP: Now(),
+                                'OOS DAYS APPLIED': OOSDAYAPPLIED.SelectedText.Value,
+                                'VEHICLE TYPE': Dropdown12.Selected.'Vehicle Type'
+                            }
+                        )
+                    )
+                )
+            );
+            With(
+                {
+                    InspID368: Concatenate(
+                        ddVehicle.Selected.'Coach/Cab/Locomotive',
+                        "-368-",
+                        dpLast368Day.SelectedDate
+                    )
+                },
+                If(
+                    IsBlank(
+                        LookUp(
+                            colInspHis,
+                            'File name with extension' = InspID368
+                        )
+                    ),
+                    Patch(
+                        'Inspection History',
+                        Defaults('Inspection History'),
+                        {
+                            'VEHICLE NO': ddVehicle.Selected.'Coach/Cab/Locomotive',
+                            'INSPECTION TYPE': "368-Day",
+                            'LAST INSP DATE': dpLast368Day.SelectedDate,
+                            'INSP DUE DATE': dpNext368Day.SelectedDate,
+                            'DUE DATE WITH OOS CREDIT': dpOOSNext368Day.SelectedDate,
+                            'OUT INSP DATE': OUTINSPDATE.SelectedDate,
+                            Title: InspID368,
+                            EMPLOYEE: User().FullName,
+                            TIMESTAMP: Now(),
+                            'OOS DAYS APPLIED': OOSDAYAPPLIED.SelectedText.Value,
+                            'VEHICLE TYPE': Dropdown12.Selected.'Vehicle Type'
+                        }
+                    )
+                )
+            );
+            If(
+                Dropdown12.Selected.'Vehicle Type' = "Cab",
+                "",
+                With(
+                    {
+                        InspID1104: Concatenate(
+                            ddVehicle.Selected.'Coach/Cab/Locomotive',
+                            "-1104-",
+                            dpLast1104Day.SelectedDate
+                        )
+                    },
+                    If(
+                        IsBlank(
+                            LookUp(
+                                colInspHis,
+                                'File name with extension' = InspID1104
+                            )
+                        ),
+                        Patch(
+                            'Inspection History',
+                            Defaults('Inspection History'),
+                            {
+                                'VEHICLE NO': ddVehicle.Selected.'Coach/Cab/Locomotive',
+                                'INSPECTION TYPE': "1104-Day",
+                                'LAST INSP DATE': dpLast1104Day.SelectedDate,
+                                'INSP DUE DATE': dpNext1104Day.SelectedDate,
+                                'DUE DATE WITH OOS CREDIT': dpOOSNext1104Day.SelectedDate,
+                                'OUT INSP DATE': OUTINSPDATE.SelectedDate,
+                                Title: InspID1104,
+                                EMPLOYEE: User().FullName,
+                                TIMESTAMP: Now(),
+                                'OOS DAYS APPLIED': OOSDAYAPPLIED.SelectedText.Value,
+                                'VEHICLE TYPE': Dropdown12.Selected.'Vehicle Type'
+                            }
+                        )
+                    )
+                )
+            );
+            With(
+                {
+                    InspID1472: Concatenate(
+                        ddVehicle.Selected.'Coach/Cab/Locomotive',
+                        "-1472-",
+                        dpLast1472Day.SelectedDate
+                    )
+                },
+                If(
+                    IsBlank(
+                        LookUp(
+                            colInspHis,
+                            'File name with extension' = InspID1472
+                        )
+                    ),
+                    Patch(
+                        'Inspection History',
+                        Defaults('Inspection History'),
+                        {
+                            'VEHICLE NO': ddVehicle.Selected.'Coach/Cab/Locomotive',
+                            'INSPECTION TYPE': "1472-Day",
+                            'LAST INSP DATE': dpLast1472Day.SelectedDate,
+                            'INSP DUE DATE': dpNext1472Day.SelectedDate,
+                            'DUE DATE WITH OOS CREDIT': dpOOSNext1472Day.SelectedDate,
+                            'OUT INSP DATE': OUTINSPDATE.SelectedDate,
+                            Title: InspID1472,
+                            EMPLOYEE: User().FullName,
+                            TIMESTAMP: Now(),
+                            'OOS DAYS APPLIED': OOSDAYAPPLIED.SelectedText.Value,
+                            'VEHICLE TYPE': Dropdown12.Selected.'Vehicle Type'
+                        }
+                    )
+                )
+            );
+            Set(
+                varWait,
+                false
+            )
+        PressedBorderColor: =App.Theme.Colors.Darker40
+        PressedColor: =Self.Color
+        PressedFill: =App.Theme.Colors.Darker40
+        Size: =15
+        Text: ="Submit"
+        Visible: =varWait
+        X: =821
+        Y: =442
+        ZIndex: =34
+
+    Label42_1 As label:
+        Align: =Align.Right
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =65
+        Text: ="Date the Vehicle Came OOS"
+        Visible: =varWait
+        Width: =428
+        X: =343
+        Y: =330
+        ZIndex: =35
+
+    OUTINSPDATE As datepicker:
+        BorderColor: =App.Theme.Colors.Darker40
+        CalendarHeaderFill: =App.Theme.Colors.Primary
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Font: =App.Theme.Font
+        HoverDateFill: =App.Theme.Colors.Lighter70
+        IconBackground: =App.Theme.Colors.Primary
+        IconFill: =App.Theme.Colors.PrimaryForeground
+        SelectedDateFill: =App.Theme.Colors.Primary
+        Visible: =varWait
+        Width: =210
+        X: =771
+        Y: =348
+        ZIndex: =36
+
